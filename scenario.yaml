@@ -10,25 +10,24 @@ switches:
   - name: s5
     dpid: "5"
 links:
-  - {src: s1, dst: s2, src_port: 2, dst_port: 1}
-  - {src: s2, dst: s3, src_port: 3, dst_port: 2}
-  - {src: s3, dst: s4, src_port: 4, dst_port: 3}
-  - {src: s4, dst: s1, src_port: 1, dst_port: 4}
-  - {src: s5, dst: s1, src_port: 1, dst_port: 5}
-  - {src: s5, dst: s2, src_port: 2, dst_port: 5}
-  - {src: s5, dst: s3, src_port: 3, dst_port: 5}
-  - {src: s5, dst: s4, src_port: 4, dst_port: 5}
+  - {src: s1, dst: s2, src_port: 2, dst_port: 1, weight: 1}
+  - {src: s2, dst: s3, src_port: 3, dst_port: 2, weight: 1}
+  - {src: s3, dst: s4, src_port: 4, dst_port: 3, weight: 1}
+  - {src: s4, dst: s1, src_port: 1, dst_port: 4, weight: 5}
+  - {src: s5, dst: s1, src_port: 1, dst_port: 5, weight: 5}
+  - {src: s5, dst: s2, src_port: 2, dst_port: 5, weight: 5}
+  - {src: s5, dst: s3, src_port: 3, dst_port: 5, weight: 5}
+  - {src: s5, dst: s4, src_port: 4, dst_port: 5, weight: 5}
 controller:
   name: c1
   ip: 127.0.0.1
   port: 6633
-scenario:
-  host:
-    name: h1
-    ip: 10.0.0.10/24
-    attachment_point: s1
-  server:
-    name: x1
-    source_switch: s4
-    destination_switch: s5
-    service_ip: 10.0.0.50/24
+host:
+  name: h1
+  ip: 10.0.0.10/24
+  attachment_point: s1
+server:
+  name: x1
+  source_switch: s4
+  destination_switch: s5
+  service_ip: 16.16.16.16
