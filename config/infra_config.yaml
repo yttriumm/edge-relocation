@@ -22,12 +22,21 @@ controller:
   name: c1
   ip: 127.0.0.1
   port: 6633
-host:
-  name: h1
-  ip: 10.0.0.10/24
-  attachment_point: s1
-server:
-  name: x1
-  source_switch: s4
-  destination_switch: s5
-  service_ip: 16.16.16.16
+
+hosts:
+  - name: h1
+    switch: s2
+    switch_port: 10
+    mac: 00:00:00:00:00:01
+    network: green
+  - name: h2
+    switch: s5
+    switch_port: 10
+    mac: 00:00:00:00:00:02
+    network: blue
+  - name: h3
+    switch: s3
+    switch_port: 10
+    mac: 00:00:00:00:00:03
+    network: green
+    

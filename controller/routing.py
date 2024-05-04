@@ -1,7 +1,9 @@
 from ast import Dict
+import dataclasses
 from queue import PriorityQueue
 from typing import List
-from scenario import Config, Link
+from typing_extensions import Self
+from config.infra_config import InfraConfig, Link
 
 
 class NetworkGraph:
@@ -13,7 +15,7 @@ class NetworkGraph:
         destination_nodes: List[str] = [link.dst for link in self.links]
         return list(set(source_nodes + destination_nodes))
     
-    def _path_from_visited_nodes(self, visited_nodes: Dict, source: str, destination: str):
+    def _path_from_visited_nodes(self, visited_nodes: Dict, source: str, destination: str) -> List[Link]:
         path = []
         node = destination
         while node != source:
@@ -52,8 +54,34 @@ class NetworkGraph:
                             previous_nodes[neighbor] = current_node
         path = self._path_from_visited_nodes(visited_nodes=previous_nodes, source=source, destination=destination)
         return path
-    
+
+@dataclasses.dataclass
+class PortMapping:
+    switch: str
+    in_port: str
+    out_port: str
+
+    @classmethod
+    def from_links(cls, links: List[Link], src: str) -> Self:
+        previous_node = src
+        mappings = []
+        for l in range(len(links)-1):
+            link = links[l]
+            link_properly_directed = link.src == previous_node
+            if not link_properly_directed:
+                link = Link(src=link.dst, dst=link.src, src_port=link.dst_port, dst_port=link.src_port, weight=1)
+            switch = link.dst
+            in_port = link.dst_port
+            out_port = links[l+1].src_port if links[l+1].src == switch else links[l+1].dst_port
+            previous_node = switch
+            mappings.append(PortMapping(switch=switch, in_port=in_port, out_port=out_port))
+        return mappings
+
+
 if __name__ == "__main__":
-    config = Config.from_file("scenario.yaml")
-    path = NetworkGraph(config.links).shortest_path(source="s1", destination="s4")
+    config = InfraConfig.from_file("scenario.yaml")
+    path = NetworkGraph(config.links_before).shortest_path("h1", "x1")
     print(path)
+    mappings = PortMapping.from_links(links=path, src="h1")
+
+    print(mappings)

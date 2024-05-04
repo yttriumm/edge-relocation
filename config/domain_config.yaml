@@ -1,0 +1,10 @@
+networks:
+  - name: green
+    code: 1
+    cidr: 192.168.0.0/24
+  - name: blue
+    code: 2
+    cidr: 10.0.0.0/24
+  - name: red
+    code: 3
+    cidr: 172.16.0.0/24
