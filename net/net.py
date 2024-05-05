@@ -1,5 +1,6 @@
 import subprocess
 import threading
+import time
 from apiflask import APIFlask
 import yaml
 from mininet.net import Mininet
@@ -22,7 +23,7 @@ def mn():
     switches = {}
     links = []
 
-    net = Mininet(waitConnected=True, controller=RemoteController, autoStaticArp=True)
+    net = Mininet(waitConnected=True, controller=RemoteController, autoStaticArp=False)
     for switch in config.switches:
         switches[switch.name] = net.addSwitch(name=switch.name, dpid=switch.dpid)
     for host in config.hosts:
@@ -56,6 +57,7 @@ def mn():
     def register_hosts():
         for host in config.hosts:
             net.getNodeByName(host.name).cmd(f"dhclient -cf net/dhcp/dhcp_{host.network}.conf {host.name}-eth0 &")
+            # net.getNodeByName(host.name).cmd(f"ip r add default dev {host.name}-eth0")
     # @app.route("/relocate")
     # def relocate():
     #     old_link = net.linksBetween(server, switches[config.server.link_before.dst])[0]

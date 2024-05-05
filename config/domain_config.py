@@ -5,7 +5,6 @@ import yaml
 @dataclass
 class Network:
     name: str
-    code: int
     cidr: str
 
 @dataclass
