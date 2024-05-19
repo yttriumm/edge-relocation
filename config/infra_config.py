@@ -9,6 +9,7 @@ class Switch:
     name: str
     dpid: str
 
+
 @dataclasses.dataclass
 class Link:
     src: str
@@ -17,11 +18,13 @@ class Link:
     dst_port: int
     weight: int = 1
 
+
 @dataclasses.dataclass
 class Controller:
     name: str
     ip: str
     port: int
+
 
 @dataclasses.dataclass
 class Host:
@@ -30,6 +33,7 @@ class Host:
     mac: str
     network: str
     switch_port: str
+
 
 @dataclasses.dataclass
 class InfraConfig:
@@ -47,6 +51,6 @@ class InfraConfig:
         hosts = data["hosts"]
         switches = data["switches"]
         return InfraConfig(switches=[Switch(**c) for c in switches],
-                      links=[Link(**l) for l in links],
-                      controller=Controller(**controller),
-                      hosts=[Host(**h) for h in hosts])
+                           links=[Link(**link) for link in links],
+                           controller=Controller(**controller),
+                           hosts=[Host(**h) for h in hosts])

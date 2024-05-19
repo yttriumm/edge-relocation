@@ -1,18 +1,17 @@
 import subprocess
 import threading
-import time
-from apiflask import APIFlask
-import yaml
+from apiflask import APIFlask, fields
 from mininet.net import Mininet
 from mininet.cli import CLI
-from mininet.node import RemoteController, OVSSwitch, Intf, Switch
+from mininet.link import TCLink, TCIntf
+from mininet.node import RemoteController
 from mininet.log import setLogLevel
-import mininet.log as log
 
 from config import INFRA_CONFIG_PATH
 from config.infra_config import InfraConfig
 
 app = APIFlask(__name__)
+
 
 def run_cmd():
     subprocess.Popen("sudo mn -c", shell=True, stdout=subprocess.PIPE).communicate()
@@ -32,9 +31,9 @@ def mn():
 
     for link in config.links:
         l = net.addLink(node1=link.src,
-                    node2=link.dst,
-                    port1=link.src_port,
-                    port2=link.dst_port)
+                        node2=link.dst,
+                        port1=link.src_port,
+                        port2=link.dst_port, cls=TCLink)
         links.append(l)
     controller = net.addController(name=config.controller.name, ip=config.controller.ip, port=config.controller.port)
 
@@ -43,7 +42,7 @@ def mn():
             switch.cmd(f'sudo ovs-ofctl add-flow {switch.name} priority=0,actions=controller')
 
     def disable_ipv6():
-        for host in net.hosts:    
+        for host in net.hosts:
             host.cmd("sysctl -w net.ipv6.conf.all.disable_ipv6=1")
             host.cmd("sysctl -w net.ipv6.conf.default.disable_ipv6=1")
             host.cmd("sysctl -w net.ipv6.conf.lo.disable_ipv6=1")
@@ -52,8 +51,7 @@ def mn():
             sw.cmd("sysctl -w net.ipv6.conf.all.disable_ipv6=1")
             sw.cmd("sysctl -w net.ipv6.conf.default.disable_ipv6=1")
             sw.cmd("sysctl -w net.ipv6.conf.lo.disable_ipv6=1")
-    
-    
+
     def register_hosts():
         for host in config.hosts:
             net.getNodeByName(host.name).cmd(f"dhclient -cf net/dhcp/dhcp_{host.network}.conf {host.name}-eth0 &")
@@ -73,14 +71,30 @@ def mn():
     #     new_switch_port = config.server.link_after.dst_port
     #     subprocess.Popen(f"sudo ovs-vsctl add-port {new_switch} {new_switch}-eth{new_switch_port} -- set Interface {new_switch}-eth{new_switch_port} ofport={new_switch_port}", shell=True, stdout=subprocess.PIPE).communicate()
     #     return f"Changed server's attachment point from {config.server.link_before.dst} to {config.server.link_after.dst}", 200
-    
+
+    @app.patch("/links/<string:switch1>/<string:switch2>")
+    @app.input({"delay": fields.Integer(required=True)})
+    def change_link_params(switch1: str, switch2: str, json_data):
+        try:
+            node1 = net.getNodeByName(switch1)
+            node2 = net.getNodeByName(switch2)
+            link: TCLink = net.linksBetween(node1, node2)[0]
+            delay = str(json_data["delay"])
+            intf1: TCIntf = link.intf1  # type: ignore
+            intf2: TCIntf = link.intf2  # type: ignore
+            intf1.config(delay=f"{delay}ms")
+            intf2.config(delay=f"{delay}ms")
+            return "OK", 200
+        except Exception as e:
+            return str(e), 500
+
     disable_ipv6()
     net.build()
     net.start()
     add_table_miss_entries()
     register_hosts()
-    # t = threading.Thread(target=app.run, kwargs=dict(port=2001))
-    # t.start()
+    t = threading.Thread(target=app.run, kwargs=dict(port=2001))
+    t.start()
     CLI(net)
     net.stop()
     subprocess.Popen("sudo mn -c", shell=True, stdout=subprocess.PIPE).communicate()

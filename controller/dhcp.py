@@ -18,20 +18,18 @@
 
 import ipaddress
 from typing import Dict, List
-from ryu.base import app_manager
-from ryu.controller import ofp_event
-from ryu.controller.handler import CONFIG_DISPATCHER, MAIN_DISPATCHER
-from ryu.controller.handler import set_ev_cls
+import logging
 from ryu.lib import addrconv
 from ryu.lib.packet import dhcp
 from ryu.lib.packet import ethernet
 from ryu.lib.packet import ipv4
 from ryu.lib.packet import packet
 from ryu.lib.packet import udp
+from ryu.lib.packet import arp
 from ryu.ofproto import ofproto_v1_3
-import logging
 
 from config.domain_config import DomainConfig, Network
+from controller.common import send_packet, Port
 
 
 class IPAM:
@@ -50,17 +48,17 @@ class IPAM:
             return ip
 
 
-
 class DHCPResponder():
     OFP_VERSIONS = [ofproto_v1_3.OFP_VERSION]
     logger = logging.getLogger(__name__)
 
-    def __init__(self, domain_config: DomainConfig):
+    def __init__(self, domain_config: DomainConfig, ports: Dict[str, List[Port]]):
         self.domain_config = domain_config
         self.ipam = {n.name: IPAM(n) for n in self.domain_config.networks}
         self.hw_addr = '0a:e4:1c:d1:3e:44'
         self.netmask = '255.255.255.0'
         self.dns = '8.8.8.8'
+        self.ports = ports
         self.bin_dns = addrconv.ipv4.text_to_bin(self.dns)
         self.bin_hostname = b'dhcp-server'
         self.bin_netmask = addrconv.ipv4.text_to_bin(self.netmask)
@@ -68,14 +66,14 @@ class DHCPResponder():
     def assemble_ack(self, pkt, ip, default_gateway):
         req_eth = pkt.get_protocol(ethernet.ethernet)
         req_ipv4 = pkt.get_protocol(ipv4.ipv4)
-        req_udp = pkt.get_protocol(udp.udp)
         req: dhcp.dhcp = pkt.get_protocol(dhcp.dhcp)
         bin_gateway = addrconv.ipv4.text_to_bin(default_gateway)
         # self.logger.info(f"MAC: {req.chaddr}")
         lease_time = 864000
         req.options.option_list.remove(
             next(opt for opt in req.options.option_list if opt.tag == 53))
-        req.options.option_list.insert(0, dhcp.option(tag=51, value=lease_time.to_bytes(4, byteorder="big")))
+        req.options.option_list.insert(0, dhcp.option(
+            tag=51, value=lease_time.to_bytes(4, byteorder="big")))
         req.options.option_list.insert(
             0, dhcp.option(tag=1, value=self.bin_netmask))
         req.options.option_list.insert(
@@ -101,10 +99,8 @@ class DHCPResponder():
     def assemble_offer(self, pkt, ip, default_gateway):
         disc_eth = pkt.get_protocol(ethernet.ethernet)
         disc_ipv4 = pkt.get_protocol(ipv4.ipv4)
-        disc_udp = pkt.get_protocol(udp.udp)
         disc = pkt.get_protocol(dhcp.dhcp)
         bin_gateway = addrconv.ipv4.text_to_bin(default_gateway)
-        message_type = 2
         try:
             disc.options.option_list.remove(
                 next(opt for opt in disc.options.option_list if opt.tag == 55))
@@ -164,19 +160,38 @@ class DHCPResponder():
         ipam = self.ipam.get(vendor_class_identifier) or self.ipam["general"]
         ip = ipam.get_or_allocate_ip(mac_address=hw_addr)
         gateway = ipam.gateway
-        #self.logger.info(f"got vci {vendor_class_identifier}, have ipams: {self.ipam}")
+        # self.logger.info(f"got vci {vendor_class_identifier}, have ipams: {self.ipam}")
         # self.logger.info("NEW DHCP %s PACKET RECEIVED: %s" %
         #                  (dhcp_state, pkt_dhcp))
         if dhcp_state == 'DHCPDISCOVER':
-            self._send_packet(datapath, port, self.assemble_offer(pkt, ip=ip, default_gateway=gateway))
+            send_packet(datapath, port, self.assemble_offer(
+                pkt, ip=ip, default_gateway=gateway))
             return ip
         elif dhcp_state == 'DHCPREQUEST':
-            self._send_packet(datapath, port, self.assemble_ack(pkt, ip=ip, default_gateway=gateway))
-            self.logger.info(f"Registered device {hw_addr} in network {ipam.network.name} with IP {ip}")
+            send_packet(datapath, port, self.assemble_ack(
+                pkt, ip=ip, default_gateway=gateway))
+            self.logger.info(
+                "Registered device %s in network %s with IP %s", hw_addr, ipam.network.name, ip)
             return ip
         else:
             return
 
+    def _assemble_arp_pkt(self, arp_req: arp.arp, unknown_mac: str):
+        pkt = packet.Packet()
+        eth_pkt = ethernet.ethernet(
+            dst=arp_req.src_mac, src=unknown_mac, ethertype=0x0806)
+        arp_pkt = arp.arp(dst_mac=arp_req.src_mac, dst_ip=arp_req.src_ip,
+                          opcode=2, src_ip=arp_req.dst_ip, src_mac=unknown_mac)
+        pkt.add_protocol(eth_pkt)
+        pkt.add_protocol(arp_pkt)
+        return pkt
+
+    def respond_arp(self, datapath, in_port, arp_req: arp.arp):
+        dpid = datapath.id
+        ports = self.ports[dpid]
+        mac = [p for p in ports if p.number == in_port][0].mac
+        arp_pkt = self._assemble_arp_pkt(arp_req=arp_req, unknown_mac=mac)
+        send_packet(pkt=arp_pkt, datapath=datapath, port=in_port)
 
     def get_vendor_class_identifier(self, pkt_dhcp: dhcp.dhcp):
         options: List[dhcp.option] = [o for o in pkt_dhcp.options.option_list]
@@ -186,17 +201,3 @@ class DHCPResponder():
             value = vci[0].value
             return value.decode()
         return None
-
-    def _send_packet(self, datapath, port, pkt):
-        ofproto = datapath.ofproto
-        parser = datapath.ofproto_parser
-        pkt.serialize()
-        # self.logger.info("packet-out %s" % (pkt,))
-        data = pkt.data
-        actions = [parser.OFPActionOutput(port=port)]
-        out = parser.OFPPacketOut(datapath=datapath,
-                                  buffer_id=ofproto.OFP_NO_BUFFER,
-                                  in_port=ofproto.OFPP_CONTROLLER,
-                                  actions=actions,
-                                  data=data)
-        datapath.send_msg(out)
