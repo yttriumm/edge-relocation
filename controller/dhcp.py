@@ -27,6 +27,7 @@ from ryu.lib.packet import packet
 from ryu.lib.packet import udp
 from ryu.lib.packet import arp
 from ryu.ofproto import ofproto_v1_3
+from ryu.controller.controller import Datapath
 
 from config.domain_config import DomainConfig, Network
 from controller.common import send_packet, Port
@@ -52,9 +53,10 @@ class DHCPResponder():
     OFP_VERSIONS = [ofproto_v1_3.OFP_VERSION]
     logger = logging.getLogger(__name__)
 
-    def __init__(self, domain_config: DomainConfig, ports: Dict[str, List[Port]]):
+    def __init__(self, domain_config: DomainConfig, ports: Dict[str, List[Port]], datapaths: Dict[str, Datapath]):
         self.domain_config = domain_config
         self.ipam = {n.name: IPAM(n) for n in self.domain_config.networks}
+        self.datapaths = datapaths
         self.hw_addr = '0a:e4:1c:d1:3e:44'
         self.netmask = '255.255.255.0'
         self.dns = '8.8.8.8'
@@ -188,13 +190,14 @@ class DHCPResponder():
 
     def respond_arp(self, datapath, in_port, arp_req: arp.arp):
         dpid = datapath.id
-        ports = self.ports[dpid]
+        switch = next(s for s, dp in self.datapaths.items() if dp.id == dpid )
+        ports = self.ports[switch]
         mac = [p for p in ports if p.number == in_port][0].mac
         arp_pkt = self._assemble_arp_pkt(arp_req=arp_req, unknown_mac=mac)
         send_packet(pkt=arp_pkt, datapath=datapath, port=in_port)
 
     def get_vendor_class_identifier(self, pkt_dhcp: dhcp.dhcp):
-        options: List[dhcp.option] = [o for o in pkt_dhcp.options.option_list]
+        options: List[dhcp.option] = [o for o in pkt_dhcp.options.option_list] #type: ignore
         # self.logger.info(f"options: {options}")
         vci = [option for option in options if option.tag == 60]
         if vci:

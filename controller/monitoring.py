@@ -34,6 +34,7 @@ class Monitoring:
         self.logger.info("Initialized monitoring component")
         self.send_times: Dict[Tuple[int, int], float] = {}  # (datapath, portno) : timestamp
         self.receive_times: Dict[Tuple[int, int], float] = {}
+        self.delay_data: Dict[Tuple[str, int, str, int], float] = {}
 
     def start(self):
         t = threading.Thread(target=self.main_loop)
@@ -42,7 +43,7 @@ class Monitoring:
     def main_loop(self):
         while True:
             self.send_probe_packets()
-            time.sleep(0.5)
+            time.sleep(1)
 
     def send_probe_packets(self):
         probe_packet: packet.Packet = self._assemble_probe_packet()
@@ -74,16 +75,20 @@ class Monitoring:
                 port2 = link.src_port
             dpid2: int = next(dp.id for switch, dp in self.datapaths.items() if switch == switch2)  # type: ignore
             delay = time_recv - self.send_times[(dpid2, port2)]
-            if delay < 0:
-                continue
             if switch1 < switch2:
                 key = (switch1, port1, switch2, port2)
             else:
                 key = (switch2, port2, switch1, port1)
+            if delay < 0:
+                if not self.delay_data.get(key):
+                    continue
+                else:
+                    delay = self.delay_data[key]
             if data.get(key):
                 data[key] = (data[key] + delay)/2
             else:
                 data[key] = delay
+        self.delay_data = data
         return data
 
     # Returns link and true if the dpid is the source of the link, and false if the dpid is the destination

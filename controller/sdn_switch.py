@@ -8,13 +8,14 @@ from ryu.controller import ofp_event
 from ryu.controller.controller import Datapath
 from ryu.ofproto import ofproto_v1_3_parser
 from ryu.ofproto.ofproto_v1_3_parser import OFPMatch, OFPPacketOut, OFPActionOutput, OFPPort
-from ryu.lib.packet import packet, ipv4, dhcp, arp, ethernet
+from ryu.lib.packet import packet, ipv4, dhcp, arp, ethernet, udp, tcp
 from config.domain_config import DomainConfig
 from config import DOMAIN_CONFIG_PATH, INFRA_CONFIG_PATH
 from config.infra_config import InfraConfig, Link, Switch
 from controller.dhcp import DHCPResponder
 from controller.common import AttachmentPoint, Port, Route
 from controller.monitoring import Monitoring
+from controller.qos import QoS
 from controller.routing import NetworkGraph, PortMapping
 from controller.api.controller_api import ControllerApi
 
@@ -36,7 +37,7 @@ class SDNSwitch(app_manager.RyuApp):
         self.monitoring = Monitoring(
             infra_config=self.config, ports=self.ports, datapaths=self.datapaths)
         self.dhcp_server = DHCPResponder(
-            domain_config=self.domain_config, ports=self.ports)
+            domain_config=self.domain_config, ports=self.ports, datapaths=self.datapaths)
         self.monitoring.start()
 
     OFP_VERSIONS = [ofproto_v1_3.OFP_VERSION]
@@ -83,6 +84,8 @@ class SDNSwitch(app_manager.RyuApp):
                     switch_name=switch, switch_port=in_port, client_ip=ip, client_mac=mac)
             return
         if pkt_ipv4:
+            traffic_class = QoS(msg).traffic_class
+            self.logger.info("Got unknown packet with traffic class %s", traffic_class)
             source_ip = pkt_ipv4.src
             dest_ip = pkt_ipv4.dst
             if not all([source_ip in self.attachment_points, dest_ip in self.attachment_points]):
@@ -90,7 +93,6 @@ class SDNSwitch(app_manager.RyuApp):
                     "A route cannot be estabilished since at least one host location is unknown")
                 dp.send_msg(self.drop(msg))
                 return
-
             out_port = self.connect_clients(
                 source_ip=source_ip, destination_ip=dest_ip)
             logger.info(
@@ -116,6 +118,7 @@ class SDNSwitch(app_manager.RyuApp):
         ofp_parser = datapath.ofproto_parser
         req = ofp_parser.OFPPortDescStatsRequest(datapath, 0)
         datapath.send_msg(req)
+
 
     def save_route(self, route: Route):
         self.routes[frozenset([route.source_ip, route.destination_ip])] = route
