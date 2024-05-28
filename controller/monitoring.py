@@ -38,7 +38,7 @@ class Monitoring:
 
     def start(self):
         t = threading.Thread(target=self.main_loop)
-        t.start()
+        #t.start()
 
     def main_loop(self):
         while True:
