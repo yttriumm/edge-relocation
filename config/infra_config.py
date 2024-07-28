@@ -1,6 +1,6 @@
 import dataclasses
 from typing import List
-
+from typing_extensions import Self
 import yaml
 
 
@@ -17,6 +17,26 @@ class Link:
     src_port: int
     dst_port: int
     weight: int = 1
+
+    @classmethod
+    def direct_from_source(cls, links: List[Self], source: str) -> List[Self]:
+        current_source = source
+        new_links = []
+        for link in links:
+            is_correct_source = link.src == current_source
+            if is_correct_source:
+                new_link = link
+            else: 
+                new_link = Link.reversed(link)
+            new_links.append(new_link)
+            current_source = new_link.dst
+        return new_links
+            
+
+    
+    @classmethod
+    def reversed(cls, link: Self) -> Self:
+        return cls(weight=link.weight, src=link.dst, src_port=link.dst_port, dst=link.src, dst_port=link.src_port )
 
 
 @dataclasses.dataclass

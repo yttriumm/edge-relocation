@@ -24,7 +24,6 @@ links:
     dst: r4
     src_port: 4 
     dst_port: 4
-    
 
 controller:
   name: c1
@@ -33,12 +32,18 @@ controller:
 
 hosts:
   - name: h1
-    switch: r4
-    switch_port: 2
+    switch: s2
+    switch_port: 10
     mac: 00:00:00:00:00:01
     network: green
   - name: h2
-    switch: r3
-    switch_port: 2
+    switch: s5
+    switch_port: 10
     mac: 00:00:00:00:00:02
+    network: blue
+  - name: h3
+    switch: s3
+    switch_port: 10
+    mac: 00:00:00:00:00:03
     network: green
+    

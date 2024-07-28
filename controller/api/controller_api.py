@@ -11,5 +11,5 @@ class ControllerApi(metaclass=SingletonMeta):
 
     @classmethod
     def start(cls):
-        t = threading.Thread(target=app.run, kwargs=dict(port=2000))
+        t = threading.Thread(target=app.run, kwargs=dict(host="0.0.0.0",port=2000))
         t.start()

@@ -1,7 +1,7 @@
 import dataclasses
 from typing import List
 
-from controller.routing import PortMapping
+from config.infra_config import Link
 from ryu.controller.controller import Datapath
 
 
@@ -32,7 +32,7 @@ class AttachmentPoint:
 class Route:
     source_ip: str
     destination_ip: str
-    mappings: List[PortMapping]
+    links: List[Link]
 
 
 @dataclasses.dataclass

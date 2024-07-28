@@ -3,7 +3,7 @@ from queue import PriorityQueue
 from typing import Dict, List, Optional
 from typing_extensions import Self
 from config.infra_config import InfraConfig, Link
-
+from config import INFRA_CONFIG_PATH
 
 class NetworkGraph:
     def __init__(self, links: List[Link]):
@@ -33,6 +33,7 @@ class NetworkGraph:
         for link in self.links:
             edges[link.src][link.dst] = link
             edges[link.dst][link.src] = link
+        
         previous_nodes = {}
         distances[source] = 0
         visited = []
@@ -55,25 +56,31 @@ class NetworkGraph:
         path = self._path_from_visited_nodes(visited_nodes=previous_nodes, source=source, destination=destination)
         return path
 
+    
+# @dataclasses.dataclass
+# class PortMapping:
+#     switch: str
+#     out_port: str
 
-@dataclasses.dataclass
-class PortMapping:
-    switch: str
-    in_port: str
-    out_port: str
+#     @classmethod
+#     def from_links(cls, links: List[Link], src: str) -> List[Self]:
+#         previous_node = src
+#         mappings = []
+#         for link_no in range(len(links)-1):
+#             link = links[link_no]
+#             link_properly_directed = link.src == previous_node
+#             if not link_properly_directed:
+#                 link = Link(src=link.dst, dst=link.src, src_port=link.dst_port, dst_port=link.src_port, weight=1)
+#             switch = link.dst
+#             in_port = link.dst_port
+#             out_port = links[link_no+1].src_port if links[link_no+1].src == switch else links[link_no+1].dst_port
+#             previous_node = switch
+#             mappings.append(PortMapping(switch=switch, out_port=out_port))  # type: ignore
+#         return mappings
 
-    @classmethod
-    def from_links(cls, links: List[Link], src: str) -> List[Self]:
-        previous_node = src
-        mappings = []
-        for link_no in range(len(links)-1):
-            link = links[link_no]
-            link_properly_directed = link.src == previous_node
-            if not link_properly_directed:
-                link = Link(src=link.dst, dst=link.src, src_port=link.dst_port, dst_port=link.src_port, weight=1)
-            switch = link.dst
-            in_port = link.dst_port
-            out_port = links[link_no+1].src_port if links[link_no+1].src == switch else links[link_no+1].dst_port
-            previous_node = switch
-            mappings.append(PortMapping(switch=switch, in_port=in_port, out_port=out_port))  # type: ignore
-        return mappings
+
+if __name__ == "__main__":
+    config = InfraConfig.from_file(INFRA_CONFIG_PATH)
+    graph = NetworkGraph(config.links)
+    sp = graph.shortest_path(source="r3", destination="r4")
+    print(sp)

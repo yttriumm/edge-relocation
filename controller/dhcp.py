@@ -159,7 +159,7 @@ class DHCPResponder():
         hw_addr = pkt_dhcp.chaddr
         dhcp_state = self.get_state(pkt_dhcp)
         vendor_class_identifier = self.get_vendor_class_identifier(pkt_dhcp)
-        ipam = self.ipam.get(vendor_class_identifier) or self.ipam["general"]
+        ipam = self.ipam.get(vendor_class_identifier) or self.ipam["general"] # type: ignore
         ip = ipam.get_or_allocate_ip(mac_address=hw_addr)
         gateway = ipam.gateway
         # self.logger.info(f"got vci {vendor_class_identifier}, have ipams: {self.ipam}")

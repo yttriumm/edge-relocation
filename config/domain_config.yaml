@@ -1,6 +1,6 @@
 networks:
   - name: green
-    cidr: 192.168.0.0/24
+    cidr: 192.168.20.0/24
   - name: blue
     cidr: 10.0.0.0/24
   - name: red

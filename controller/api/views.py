@@ -39,3 +39,9 @@ def get_delay_data():
     result = [{"switch1": f"{link[0]}-port{link[1]}", "switch2": f"{link[2]}-port{link[3]}", "delay": delay}
               for link, delay in data.items()]
     return sorted(result, key=lambda r: r["delay"], reverse=True)
+
+
+@app.route("/ports")
+def get_ports():
+    data = ControllerApi.controller.ports
+    return data

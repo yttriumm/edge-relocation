@@ -42,7 +42,7 @@ class Monitoring:
 
     def main_loop(self):
         while True:
-            self.send_probe_packets()
+            # self.send_probe_packets()
             time.sleep(1)
 
     def send_probe_packets(self):
