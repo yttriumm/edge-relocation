@@ -63,6 +63,18 @@ class SDNSwitch(app_manager.RyuApp):
         self.remove_flows(msg.datapath)
         self.install_default_rules(msg.datapath)
 
+    @set_ev_cls(ofp_event.EventOFPPortDescStatsReply, MAIN_DISPATCHER)  # type: ignore
+    def port_desc_stats_reply_handler(self, ev):
+        dpid = ev.msg.datapath.id
+        switch = [k for k in self.connected_switches if int(k.dpid) == dpid][0]
+        if switch.name not in self.ports:
+            self.ports[switch.name] = []
+        p: OFPPort
+        for p in ev.msg.body:
+            port = Port(
+                mac=p.hw_addr, number=p.port_no, name=p.name.decode(), switch=switch.name, datapath=dpid)
+            self.ports[switch.name].append(port)
+
     @set_ev_cls(ofp_event.EventOFPPacketIn, MAIN_DISPATCHER)  # type: ignore
     def packet_in_handler(self, ev):
         msg = ev.msg
@@ -71,11 +83,19 @@ class SDNSwitch(app_manager.RyuApp):
         in_port: int = msg.match["in_port"]
         switch = [s for s, _dp in self.datapaths.items() if _dp == dp][0]
         pkt = packet.Packet(msg.data)
-        
+        self.logger.info(pkt)
         pkt_ipv4: Optional[ipv4.ipv4] = pkt.get_protocol(ipv4.ipv4)  # type: ignore
         pkt_eth: Optional[ethernet.ethernet] = pkt.get_protocol(ethernet.ethernet)  # type: ignore
         pkt_dhcp: Optional[dhcp.dhcp] = pkt.get_protocol(dhcp.dhcp)  # type: ignore
         pkt_arp: Optional[arp.arp] = pkt.get_protocol(arp.arp)  # type: ignore
+        if pkt_eth and pkt_eth.src not in [ap.client_mac for ap in self.attachment_points.values()]:
+            self.logger.info(f"PacketIn from MAC {pkt_eth.src}")
+        if pkt_eth and (pkt_eth.src in [ap.client_mac for ap in self.attachment_points.values()]):
+            old_ap = [ap for ap in self.attachment_points.values() if ap.client_mac == pkt_eth.src][0]
+            new_ap = AttachmentPoint(switch_name=switch, switch_port=in_port, client_ip=old_ap.client_ip, client_mac=pkt_eth.src)
+            if (old_ap.switch_name != new_ap.switch_name) or (old_ap.switch_port != new_ap.switch_port):
+                self.logger.info(f"MAC {pkt_eth.src} changed its AP from {old_ap.switch_name}:{old_ap.switch_port} to {new_ap.switch_name}:{new_ap.switch_port}")
+                self.handle_new_attachment_point(ap=new_ap)
         if pkt_ipv4 and pkt_ipv4.dst == "8.8.8.8":
             self.drop(msg)
             return
@@ -85,7 +105,6 @@ class SDNSwitch(app_manager.RyuApp):
         if pkt_arp:
             self.dhcp_server.respond_arp(dp, in_port, pkt_arp)
             return
-
         # logger.info(f"PacketIn received at {switch} port {in_port}: {pkt}")
         if pkt_eth and pkt_eth.src == "ba:ba:ba:ba:ba:ba":
             self.monitoring.handle_return_probe_packet(switch=switch, in_port=in_port)
@@ -95,12 +114,10 @@ class SDNSwitch(app_manager.RyuApp):
             if ip:
                 ap = AttachmentPoint(
                     switch_name=switch, switch_port=in_port, client_ip=ip, client_mac=mac)
-                self.attachment_points[ip] = ap
                 self.handle_new_attachment_point(ap)
             return
         if pkt_ipv4:
             traffic_class = QoS(msg).traffic_class
-            # self.logger.info("Got unknown packet with traffic class %s", traffic_class)
             source_ip = pkt_ipv4.src
             dest_ip = pkt_ipv4.dst
             self.logger.info(f"PACKET IN SWITCH: ${switch} PORT {in_port} IP SRC: ${source_ip} DST IP: ${dest_ip}")
@@ -120,28 +137,20 @@ class SDNSwitch(app_manager.RyuApp):
                                      data=data))
 
     def handle_new_attachment_point(self, ap: AttachmentPoint):
+        for dp in self.datapaths.values():
+            self.remove_flows(datapath=dp, src_ip=ap.client_ip)
+            self.remove_flows(datapath=dp, dst_ip=ap.client_ip)
+            self.remove_flows(datapath=dp, src_mac=ap.client_mac)
+            self.remove_flows(datapath=dp, dst_mac=ap.client_mac)
         dp = self.datapaths[ap.switch_name]
-        gateway_flow_mod_change_mac = self._get_flow_mod_msg(datapath=dp, dest_ip=ap.client_ip, new_dest_mac=ap.client_mac, out_port=ap.switch_port)
-        gateway_flow_mod_l2 = self._get_flow_mod_msg(datapath=dp, dest_mac=ap.client_mac, out_port=ap.switch_port)
-        dp.send_msg(gateway_flow_mod_change_mac)
-        dp.send_msg(gateway_flow_mod_l2)
+        self.send_flow_mod(datapath=dp, dest_ip=ap.client_ip, new_dest_mac=ap.client_mac, out_port=ap.switch_port)
+        self.send_flow_mod(datapath=dp, dest_mac=ap.client_mac, out_port=ap.switch_port)
+        self.attachment_points[ap.client_ip] = ap
 
-
-    @set_ev_cls(ofp_event.EventOFPPortDescStatsReply, MAIN_DISPATCHER)  # type: ignore
-    def port_desc_stats_reply_handler(self, ev):
-        dpid = ev.msg.datapath.id
-        switch = [k for k in self.connected_switches if int(k.dpid) == dpid][0]
-        if switch.name not in self.ports:
-            self.ports[switch.name] = []
-        p: OFPPort
-        for p in ev.msg.body:
-            port = Port(
-                mac=p.hw_addr, number=p.port_no, name=p.name.decode(), switch=switch.name, datapath=dpid)
-            self.ports[switch.name].append(port)
+    
 
     def request_port_stats(self, datapath):
-        ofp_parser = datapath.ofproto_parser
-        req = ofp_parser.OFPPortDescStatsRequest(datapath, 0)
+        req = parser.OFPPortDescStatsRequest(datapath, 0)
         datapath.send_msg(req)
 
 
@@ -151,7 +160,6 @@ class SDNSwitch(app_manager.RyuApp):
     def connect_clients(self, source_ip: str, destination_ip: str):
         src_ap = self.attachment_points[source_ip]
         dst_ap = self.attachment_points[destination_ip]
-        # self.remove_old_routes(source_ip=source_ip, destination_ip=destination_ip)
         backbone_with_attachment_points = self.config.links
         graph = NetworkGraph(backbone_with_attachment_points)
         path = graph.shortest_path(
@@ -160,19 +168,18 @@ class SDNSwitch(app_manager.RyuApp):
         for link in links:
             dp1 = self.datapaths[link.src]
             dp2 = self.datapaths[link.dst]
-            msg1 = self._get_flow_mod_msg(
+            self.send_flow_mod(
                 datapath=dp1,
                 src_ip=source_ip,
                 dest_ip=destination_ip,
                 out_port=link.src_port)
-            msg2 = self._get_flow_mod_msg(
+            self.send_flow_mod(
                 datapath=dp2,
                 src_ip=destination_ip,
                 dest_ip=source_ip,
                 out_port=link.dst_port
                 )
-            dp1.send_msg(msg1)
-            dp2.send_msg(msg2)
+
         route = Route(source_ip=source_ip,
                       destination_ip=destination_ip, links=path)
         self.save_route(route)
@@ -184,36 +191,42 @@ class SDNSwitch(app_manager.RyuApp):
                             in_port=msg.match['in_port'],
                             actions=[],
                             data=None if msg.buffer_id != ofproto_v1_3.OFP_NO_BUFFER else msg.data)
+    
 
-    def _get_no_match_msg(self, datapath):
-        ofp = ofproto_v1_3
-        ofp_parser = ofproto_v1_3_parser
-        ofp_parser.OFPAction
-        match: OFPMatch = ofp_parser.OFPMatch()
-        actions = [ofp_parser.OFPActionOutput(ofp_parser.ofproto.OFPP_CONTROLLER)]
-        inst = [ofp_parser.OFPInstructionActions(ofp.OFPIT_APPLY_ACTIONS,
+    def install_default_rules(self, datapath: Datapath):
+        actions = [parser.OFPActionOutput(parser.ofproto.OFPP_CONTROLLER)]
+        inst = [parser.OFPInstructionActions(ofp.OFPIT_APPLY_ACTIONS,
                                                  actions)]
-        req = ofp_parser.OFPFlowMod(datapath=datapath,
+        req = parser.OFPFlowMod(datapath=datapath,
                                     command=ofp.OFPFC_ADD,
-                                    match=match,
+                                    match=parser.OFPMatch(),
                                     priority=0,
                                     instructions=inst)
-        return req
         
-    def install_default_rules(self, datapath: Datapath):
-        no_match = self._get_no_match_msg(datapath)
-        datapath.send_msg(no_match)
+        datapath.send_msg(req)
 
-    def remove_flows(self, datapath):
+    def remove_flows(self, datapath: Datapath, src_ip: Optional[str] = None, dst_ip: Optional[str] = None, src_mac: Optional[str] = None, dst_mac: Optional[str] = None, eth_type: Optional[str] = None):
         """Create OFP flow mod message to remove flows from table."""
         match = parser.OFPMatch()
+        if eth_type:
+            match.set_dl_type(eth_type)
+        if src_ip:
+            match.set_dl_type(0x800)
+            match.set_ipv4_src(ipv4_to_int(src_ip))
+        if dst_ip:
+            match.set_dl_type(0x800)
+            match.set_ipv4_dst(ipv4_to_int(dst_ip))
+        if src_mac:
+            match.set_dl_dst(addrconv.mac.text_to_bin(src_mac))
+        if dst_mac:
+            match.set_dl_dst(addrconv.mac.text_to_bin(dst_mac))
         instructions = []
         flow_mod = parser.OFPFlowMod(datapath, 0, 0, 0, ofproto_v1_3.OFPFC_DELETE, 0, 0, 1, ofproto_v1_3.OFPCML_NO_BUFFER, ofproto_v1_3.OFPP_ANY, ofproto_v1_3.OFPG_ANY, 0, match, instructions)
         datapath.send_msg(flow_mod)
         
     
 
-    def _get_flow_mod_msg(self,
+    def send_flow_mod(self,
                           datapath,
                           out_port,
                           dest_ip=None,
@@ -244,4 +257,4 @@ class SDNSwitch(app_manager.RyuApp):
                                                  actions)]
         req = parser.OFPFlowMod(datapath=datapath, match=match, instructions=inst)
         # logger.info(req)
-        return req
+        datapath.send_msg(req)

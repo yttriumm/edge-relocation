@@ -39,6 +39,7 @@ class IPAM:
         self.mac_to_ip: Dict[str, str] = {}
         self.ip_pool = ipaddress.ip_network(network.cidr).hosts()
         self.gateway = str(next(self.ip_pool))
+        
 
     def get_or_allocate_ip(self, mac_address):
         if mac_address in self.mac_to_ip:
@@ -82,6 +83,9 @@ class DHCPResponder():
             0, dhcp.option(tag=3, value=bin_gateway))
         req.options.option_list.insert(
             0, dhcp.option(tag=53, value=b'\x05'))
+        req.options.option_list.insert(
+            0, dhcp.option(tag=12, value=self.bin_hostname)
+        )
 
         ack_pkt = packet.Packet()
         ack_pkt.add_protocol(ethernet.ethernet(
@@ -151,6 +155,8 @@ class DHCPResponder():
             state = 'DHCPREQUEST'
         elif dhcp_state == 5:
             state = 'DHCPACK'
+        elif dhcp_state == 7:
+            state = 'DHCPRELEASE'
         return state
 
     def handle_dhcp(self, datapath, port, pkt):
@@ -190,6 +196,8 @@ class DHCPResponder():
 
     def respond_arp(self, datapath, in_port, arp_req: arp.arp):
         dpid = datapath.id
+        if not self.is_ip_in_ipam(arp_req.dst_ip):
+            return
         switch = next(s for s, dp in self.datapaths.items() if dp.id == dpid )
         ports = self.ports[switch]
         mac = [p for p in ports if p.number == in_port][0].mac
@@ -204,3 +212,12 @@ class DHCPResponder():
             value = vci[0].value
             return value.decode()
         return None
+
+    def is_ip_in_ipam(self, ip: str):
+        for ipam in self.ipam.values():
+            if ipam.gateway == ip:
+                return True
+            for ip_ipam in ipam.mac_to_ip.values():
+                if ip == ip_ipam:
+                    return True
+        return False
