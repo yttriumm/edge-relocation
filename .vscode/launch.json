@@ -5,10 +5,11 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python Debugger: Attach using Process Id",
+            "name": "Python Debugger: Current File",
             "type": "debugpy",
-            "request": "attach",
-            "processId": "${command:pickProcess}"
+            "request": "launch",
+            "program": "main.py",
+            "console": "integratedTerminal",
         }
     ]
 }

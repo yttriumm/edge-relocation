@@ -1,30 +1,20 @@
 from dataclasses import asdict
+import dataclasses
 from controller.api.controller_api import ControllerApi
 from controller.api import app
 
 
-@app.route('/switches')
-def get_switches():
-    return ControllerApi.controller.connected_switches
-
-# @app.route("/connect", methods=["POST"])
-# @app.input({"new_topo": fields.Boolean(required=True), "delete_old_flows": fields.Boolean(required=True)}, location="form")
-# def connect_hosts(form_data):
-#     try:
-#         mappings = ControllerApi().controller.connect_hosts(delete_old_flows=form_data["delete_old_flows"], new_topo=form_data["new_topo"])
-#         return [asdict(m) for m in mappings], 200
-#     except Exception as e:
-#         return abort(500, str(e))
-
-
 @app.route("/attachment-points")
 def attachment_points():
-    return ControllerApi.controller.attachment_points
+    return ControllerApi.controller.device_manager.attachment_points
 
 
 @app.route("/routes")
 def routes():
-    return [{"nodes": list(r), "route": route.mappings} for r, route in ControllerApi.controller.routes.items()]
+    return [
+        dataclasses.asdict(r)
+        for r in ControllerApi.controller.route_manager.routes.values()
+    ]
 
 
 @app.route("/send-probe-packets")
@@ -35,13 +25,15 @@ def send_probe_packets():
 
 @app.route("/delay-data")
 def get_delay_data():
-    data = ControllerApi.controller.monitoring.assemble_delay_data()
-    result = [{"switch1": f"{link[0]}-port{link[1]}", "switch2": f"{link[2]}-port{link[3]}", "delay": delay}
-              for link, delay in data.items()]
-    return sorted(result, key=lambda r: r["delay"], reverse=True)
+    data = ControllerApi.controller.monitoring.delay_data
+    result = [
+        {"link": dataclasses.asdict(link), "delay": delay}
+        for link, delay in data.items()
+    ]
+    result.sort(key=lambda d: d["delay"], reverse=True)
+    return result
 
 
-@app.route("/ports")
-def get_ports():
-    data = ControllerApi.controller.ports
-    return data
+@app.route("/ip-allocations")
+def get_alloations():
+    return ControllerApi.controller.ipam.get_all_allocations()
