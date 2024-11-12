@@ -1,8 +1,7 @@
-import dataclasses
 import functools
 import logging
 import time
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List, Tuple
 from ryu.lib.packet import ethernet, packet
 from config.infra_config import InfraConfig, Link
 from ryu.lib.hub import spawn
@@ -12,13 +11,6 @@ from controller.device_manager import DeviceManager
 
 def timestamp_ms():
     return time.time() * 1000
-
-
-@dataclasses.dataclass
-class DelayData:
-    switch1: str
-    switch2: str
-    delay: float
 
 
 class Monitoring:
@@ -52,6 +44,10 @@ class Monitoring:
     def monitor_routes(self):
         pass
 
+    def handle_new_delay_data(self, link: Link, delay: float):
+        new_link = link.copy(new_delay=delay)
+        self.device_manager.update_link(link=new_link)
+
     def send_probe_packets(self):
         probe_packet: packet.Packet = self._assemble_probe_packet()
         for switch, datapath in self.device_manager.datapaths.items():
@@ -71,7 +67,9 @@ class Monitoring:
         )
         source_switch = self.device_manager.get_switch(switch_name=link.src)
         send_time = self.send_times[(int(source_switch.dpid), link.src_port)]
-        self.delay_data[link] = ts - send_time
+        delay = ts - send_time
+        self.delay_data[link] = delay
+        self.handle_new_delay_data(link=link, delay=delay)
 
     @functools.lru_cache
     def _assemble_probe_packet(self):

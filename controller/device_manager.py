@@ -1,6 +1,6 @@
 import logging
-from typing import Dict, List, Optional
-from config.infra_config import InfraConfig, Switch
+from typing import Callable, Dict, List, Optional
+from config.infra_config import InfraConfig, Link, Switch
 from ryu.controller.controller import Datapath
 
 from controller.common import AttachmentPoint, Port
@@ -16,6 +16,8 @@ class DeviceManager:
         self.attachment_points: Dict[str, AttachmentPoint] = {}
         self.datapaths: Dict[str, Datapath] = {}  # {switch name: Datapath}
         self.connected_switches: List[Switch] = []
+        self.links: List[Link] = self.config.links
+        self.observers = []
 
     def add_datapath(self, datapath: Datapath):
         switch = [
@@ -26,6 +28,28 @@ class DeviceManager:
         self.connected_switches.append(switch)
         self.ports[switch.name] = []
         self.datapaths[switch.name] = datapath
+
+    def add_link_observer(self, fn: Callable[[List[Link]], None]):
+        self.observers.append(fn)
+
+    def remove_link_observer(self, fn: Callable[[List[Link]], None]):
+        try:
+            self.observers.pop(self.observers.index(fn))
+        except IndexError:
+            pass
+
+    def notify_link_observers(self):
+        for observer in self.observers:
+            observer(self.links)
+
+    def update_link(self, link: Link):
+        for i, _link in enumerate(self.links):
+            if _link == link:
+                self.links[i] = link
+                break
+        else:
+            self.links.append(link)
+        self.notify_link_observers()
 
     def add_port(self, port: Port):
         self.ports[port.switch].append(port)
@@ -60,6 +84,9 @@ class DeviceManager:
         if mac_addr in [dev.client_mac for dev in self.attachment_points.values()]:
             return True
         return False
+
+    def has_ip(self, ip: str) -> bool:
+        return ip in [dev.client_ip for dev in self.attachment_points.values()]
 
     def get_attachment_point_by_mac(self, mac_addr: str) -> AttachmentPoint:
         try:

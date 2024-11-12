@@ -1,11 +1,21 @@
+import logging
+from ryu.controller.controller import Datapath
 from queue import PriorityQueue
 from typing import Dict, FrozenSet, List, Optional
 from config.infra_config import InfraConfig, Link
 from config import INFRA_CONFIG_PATH
-from controller.common import Route
+from controller.common import (
+    PacketMatch,
+    Packet,
+    Route,
+    send_flow_mod_with_match,
+    send_remove_flow_with_match,
+)
+from ryu.ofproto.ofproto_v1_3_parser import OFPPacketOut, OFPActionOutput
 from controller.device_manager import DeviceManager
-from controller.monitoring import DelayData
-from controller.qos import TrafficClass
+
+
+logger = logging.getLogger(__name__)
 
 
 class NetworkGraph:
@@ -73,70 +83,104 @@ class NetworkGraph:
 
 
 class RouteManager:
-    def __init__(self, infra_config: InfraConfig, device_manager: DeviceManager):
-        self.infra_config = infra_config
+    def __init__(self, device_manager: DeviceManager):
         self.device_manager = device_manager
-        self.routes: Dict[FrozenSet[str], Route] = {}
+        self.routes: Dict[PacketMatch, Route] = {}
+        self.device_manager.add_link_observer(self.handle_link_update)
+
+    def __del__(self):
+        self.device_manager.remove_link_observer(self.handle_link_update)
 
     def save_route(self, route: Route):
-        self.routes[frozenset([route.source_ip, route.destination_ip])] = route
+        self.routes[route.match] = route
 
-    def create_route(
+    def handle_link_update(self, links: List[Link]):
+        for route in self.routes.values():
+            if (
+                route.get_new_total_delay(links=links)
+                > route.match.traffic_class.max_delay_ms
+            ):
+                logger.info(f"Reouting {route}...")
+                route = self.get_route(
+                    match=route.match,
+                )
+                self.save_route(route=route)
+                self.backoff_route(route)
+
+    def handle_packet_in(self, pkt: Packet, datapath: Datapath, in_port: int):
+        if not pkt.ipv4:
+            raise Exception("No IPV4 found")
+        match = pkt.match
+        source_ip = match.ip_src
+        destination_ip = match.ip_dst
+        if not source_ip or not destination_ip:
+            raise Exception(
+                "No source or destination IP. Cannot find attachment points."
+            )
+        if not self.device_manager.has_ip(source_ip) or not self.device_manager.has_ip(
+            destination_ip
+        ):
+            raise Exception(
+                f"Unknown source or destination {source_ip=} {destination_ip=}"
+            )
+        route = self.get_route(
+            match=match,
+        )
+        self.apply_route(route=route)
+        out_port = route.links[0].src_port
+        datapath.send_msg(
+            OFPPacketOut(
+                datapath=datapath,
+                in_port=in_port,
+                actions=[OFPActionOutput(out_port)],
+                data=pkt.data,
+            )
+        )
+
+    def get_route(
         self,
-        source_ip: str,
-        destination_ip: str,
-        traffic_class: Optional[TrafficClass] = None,
-    ):
-        src_ap = self.device_manager.attachment_points[source_ip]
-        dst_ap = self.device_manager.attachment_points[destination_ip]
-        backbone_with_attachment_points = self.infra_config.links
-        graph = NetworkGraph(backbone_with_attachment_points)
+        match: PacketMatch,
+    ) -> Route:
+        if not match.ip_src or not match.ip_dst:
+            raise Exception(f"No source or destination IP. Got: {match}")
+        src_ap = self.device_manager.attachment_points[match.ip_src]
+        dst_ap = self.device_manager.attachment_points[match.ip_dst]
+        network = self.device_manager.links
+        graph = NetworkGraph(network)
         path = graph.shortest_path(
             source=src_ap.switch_name, destination=dst_ap.switch_name
         )
         links = Link.direct_from_source(path, source=src_ap.switch_name)
-        route = Route(
-            source_ip=source_ip,
-            destination_ip=destination_ip,
-            links=links,
-            traffic_class=traffic_class,
-        )
+        logger.debug(f"Got traffic class {match} with match {match}")
+        route = Route(links=links, match=match, source_switch=src_ap.switch_name)
+        if route.total_delay > match.traffic_class.max_delay_ms:
+            raise Exception(
+                f"Route delay ({route.total_delay}) is bigger than requested {route.match.traffic_class.max_delay_ms} "
+            )
+
+        return route
+
+    def delete_route(self, route: Route):
+        if route.match in self.routes:
+            self.routes.pop(route.match)
+
+    def apply_route(self, route: Route):
+        match = route.match
+        for link in route.links:
+            dp1 = self.device_manager.datapaths[link.src]
+            dp2 = self.device_manager.datapaths[link.dst]
+            send_flow_mod_with_match(datapath=dp1, out_port=link.src_port, match=match)
+            send_flow_mod_with_match(
+                datapath=dp2, out_port=link.dst_port, match=match.reversed()
+            )
         self.save_route(route)
-        return links
 
-    def delete_route(
-        self, source_ip: Optional[str] = None, destination_ip: Optional[str] = None
-    ):
-        route_keys = []
-        if source_ip:
-            keys = [k for k in self.routes.keys() if source_ip in k]
-            route_keys = route_keys + keys
-        if destination_ip:
-            keys = [k for k in self.routes.keys() if destination_ip in k]
-        for key in route_keys:
-            self.routes.pop(key)
-
-
-# @dataclasses.dataclass
-# class PortMapping:
-#     switch: str
-#     out_port: str
-
-#     @classmethod
-#     def from_links(cls, links: List[Link], src: str) -> List[Self]:
-#         previous_node = src
-#         mappings = []
-#         for link_no in range(len(links)-1):
-#             link = links[link_no]
-#             link_properly_directed = link.src == previous_node
-#             if not link_properly_directed:
-#                 link = Link(src=link.dst, dst=link.src, src_port=link.dst_port, dst_port=link.src_port, weight=1)
-#             switch = link.dst
-#             in_port = link.dst_port
-#             out_port = links[link_no+1].src_port if links[link_no+1].src == switch else links[link_no+1].dst_port
-#             previous_node = switch
-#             mappings.append(PortMapping(switch=switch, out_port=out_port))  # type: ignore
-#         return mappings
+    def backoff_route(self, route: Route):
+        for link in route.links:
+            dp1 = self.device_manager.datapaths[link.src]
+            dp2 = self.device_manager.datapaths[link.dst]
+            send_remove_flow_with_match(datapath=dp1, match=route.match)
+            send_remove_flow_with_match(datapath=dp2, match=route.match.reversed())
 
 
 if __name__ == "__main__":

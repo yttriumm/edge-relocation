@@ -1,5 +1,5 @@
 import dataclasses
-from typing import List
+from typing import List, Optional
 from typing_extensions import Self
 import yaml
 
@@ -16,7 +16,20 @@ class Link:
     dst: str
     src_port: int
     dst_port: int
-    weight: int = 1
+    delay: float = 0
+
+    def __eq__(self, other):
+        if not isinstance(other, Link):
+            return ValueError("Link can be compared only with other Link")
+        fields = ["src", "dst", "src_port", "dst_port"]
+        for f in fields:
+            if not getattr(self, f) == getattr(other, f):
+                return False
+        return True
+
+    @property
+    def weight(self):
+        return self.delay
 
     @classmethod
     def direct_from_source(cls, links: List[Self], source: str) -> List[Self]:
@@ -32,10 +45,19 @@ class Link:
             current_source = new_link.dst
         return new_links
 
+    def copy(self, new_delay: Optional[float] = None):
+        return Link(
+            src=self.src,
+            dst=self.dst,
+            delay=new_delay or self.delay,
+            dst_port=self.dst_port,
+            src_port=self.src_port,
+        )
+
     @classmethod
     def reversed(cls, link: Self) -> Self:
         return cls(
-            weight=link.weight,
+            delay=link.delay,
             src=link.dst,
             src_port=link.dst_port,
             dst=link.src,
@@ -63,7 +85,6 @@ class Host:
 class InfraConfig:
     switches: List[Switch]
     links: List[Link]
-    hosts: List[Host]
     controller: Controller
 
     @classmethod
@@ -78,7 +99,6 @@ class InfraConfig:
             switches=[Switch(**c) for c in switches],
             links=[Link(**link) for link in links],
             controller=Controller(**controller),
-            hosts=[Host(**h) for h in hosts],
         )
 
     def get_link(self, switch: str, port: int, is_source: bool):
@@ -92,3 +112,7 @@ class InfraConfig:
                     return Link.reversed(link=link)
                 return link
         raise Exception(f"No corresponding link found for {switch=} {port=}")
+
+
+if __name__ == "__main__":
+    print(InfraConfig.from_file("config_files/infra_config.yaml"))

@@ -187,7 +187,7 @@ class DHCPResponder:
                 datapath, port, self.assemble_ack(pkt, ip=ip, default_gateway=gateway)
             )
             self.logger.info(
-                "Registered device %s in network %s with IP %s",
+                "Got DHCPREQUEST from %s: returned IP in network %s: %s",
                 hw_addr,
                 network.network.name,
                 ip,
