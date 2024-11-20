@@ -346,6 +346,7 @@ class Route:
             "path": [
                 self.match.ip_src,
                 *[link.src for link in self.path],
+                self.path[-1].dst,
                 self.match.ip_dst,
             ],
         }
