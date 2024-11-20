@@ -10,16 +10,27 @@ class IPAMNetwork:
     def __init__(self, network: Network):
         self.network = network
         self.mac_to_ip: Dict[str, str] = {}
+        self.released_mac_to_ip: Dict[str, str] = {}
         self.ip_pool = ipaddress.ip_network(network.cidr).hosts()
         self.gateway = str(next(self.ip_pool))
 
     def get_or_allocate_ip(self, mac_address):
-        if mac_address in self.mac_to_ip:
-            return self.mac_to_ip[mac_address]
+        try:
+            return self.get_ip(mac_address=mac_address)
+        except KeyError:
+            return self.allocate_ip(mac_address=mac_address)
+
+    def get_ip(self, mac_address):
+        return self.mac_to_ip[mac_address]
+
+    def allocate_ip(self, mac_address):
+        if mac_address in self.released_mac_to_ip:
+            ip = self.released_mac_to_ip.pop(mac_address)
+            self.mac_to_ip[mac_address] = ip
         else:
             ip = str(next(self.ip_pool))
             self.mac_to_ip[mac_address] = ip
-            return ip
+        return ip
 
     def has_ip(self, ip: str):
         if ip == self.gateway:
@@ -30,9 +41,10 @@ class IPAMNetwork:
         return mac_address in self.mac_to_ip
 
     def release_allocation(self, mac_address: str):
-        if mac_address not in self.mac_to_ip:
+        if mac_address not in self.released_mac_to_ip:
             return
-        self.mac_to_ip.pop(mac_address)
+        ip = self.released_mac_to_ip.pop(mac_address)
+        self.released_mac_to_ip[ip] = ip
 
 
 class IPAM:
@@ -42,6 +54,18 @@ class IPAM:
             network.name: IPAMNetwork(network)
             for network in self.domain_config.networks
         }
+
+    def get_ip(self, mac_address: str) -> str:
+        network = self.get_network_for_mac(mac_address=mac_address)
+        return network.mac_to_ip[mac_address]
+
+    def get_mac(self, ip_address: str) -> str:
+        for network in self.networks.values():
+            for mac, ip in network.mac_to_ip.items():
+                if ip == ip_address:
+                    return mac
+        else:
+            raise Exception(f"No MAC found for {ip_address=}")
 
     def get_or_allocate_ip(
         self, network_name: str, mac_address: str
@@ -72,7 +96,10 @@ class IPAM:
 
     def release_ip_allocation(self, mac_address: str):
         logger.info(f"Releasing allocation for mac {mac_address=}")
-        network = self.get_network_for_mac(mac_address=mac_address)
+        try:
+            network = self.get_network_for_mac(mac_address=mac_address)
+        except Exception:
+            return
         network.release_allocation(mac_address=mac_address)
 
     def get_all_allocations(self):

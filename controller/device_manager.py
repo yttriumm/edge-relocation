@@ -1,16 +1,29 @@
 import logging
 from typing import Callable, Dict, List, Optional
+from config.domain_config import DomainConfig
 from config.infra_config import InfraConfig, Link, Switch
 from ryu.controller.controller import Datapath
 
-from controller.common import AttachmentPoint, Port
+from controller.common import AttachmentPoint, Packet, Port, remove_flows, send_flow_mod
+from controller.ipam import IPAM
 
 
 logger = logging.getLogger(__name__)
 
 
 class DeviceManager:
-    def __init__(self, config: InfraConfig):
+    def __init__(
+        self,
+        config: InfraConfig,
+        ipam: Optional[IPAM] = None,
+        domain_config: Optional[DomainConfig] = None,
+    ):
+        if ipam:
+            self.ipam = ipam
+        elif domain_config:
+            self.ipam = IPAM(domain_config=domain_config)
+        else:
+            raise ValueError("DeviceManager needs an IPAM instance or domain config")
         self.config = config
         self.ports: Dict[str, List[Port]] = {}  # {switch name: port[]}
         self.attachment_points: Dict[str, AttachmentPoint] = {}
@@ -18,6 +31,53 @@ class DeviceManager:
         self.connected_switches: List[Switch] = []
         self.links: List[Link] = self.config.links
         self.observers = []
+
+    def handle_packet_in(self, pkt: Packet, in_port: int, datapath: Datapath):
+        if pkt.ethernet:
+            switch = self.get_switch(dpid=datapath.id)  # type: ignore
+            ap = AttachmentPoint(
+                client_mac=pkt.ethernet.src,
+                switch_name=switch.name,
+                switch_port=in_port,
+            )
+            self.check_attachment_point(ap=ap)
+
+    def check_attachment_point(self, ap: AttachmentPoint):
+        try:
+            current_ap = self.get_attachment_point_by_mac(mac_addr=ap.client_mac)
+        except Exception:
+            current_ap = None
+        if (
+            current_ap
+            and current_ap.switch_name == ap.switch_name
+            and current_ap.switch_port == ap.switch_port
+        ):
+            return
+        else:
+            self.handle_new_attachment_point(ap=ap)
+
+    def handle_ip_assignment(self, mac_address: str, ip_address: str):
+        ap = self.get_attachment_point_by_mac(mac_addr=mac_address)
+        gateway = self.get_switch(switch_name=ap.switch_name)
+        gateway_dp = self.datapaths[gateway.name]
+        for dp in self.datapaths.values():
+            remove_flows(datapath=dp, src_ip=ip_address)
+            remove_flows(datapath=dp, dst_ip=ip_address)
+        send_flow_mod(
+            datapath=gateway_dp,
+            dest_ip=ip_address,
+            new_dest_mac=ap.client_mac,
+            out_port=ap.switch_port,
+        )
+
+    def handle_new_attachment_point(self, ap: AttachmentPoint):
+        for dp in self.datapaths.values():
+            remove_flows(datapath=dp, src_mac=ap.client_mac)
+            remove_flows(datapath=dp, dst_mac=ap.client_mac)
+        switch = self.get_switch(switch_name=ap.switch_name)
+        dp = self.datapaths[switch.name]
+        send_flow_mod(datapath=dp, out_port=ap.switch_port, dest_mac=ap.client_mac)
+        self.add_attachment_point(attachment_point=ap)
 
     def add_datapath(self, datapath: Datapath):
         switch = [
@@ -70,7 +130,8 @@ class DeviceManager:
         raise ValueError("dpid or switch_name must be provided")
 
     def add_attachment_point(self, attachment_point: AttachmentPoint):
-        self.attachment_points[attachment_point.client_ip] = attachment_point
+        self.attachment_points[attachment_point.client_mac] = attachment_point
+        logger.info(f"Adding {attachment_point=}")
 
     def get_ports(self, dpid: int) -> List[Port]:
         switch = self.get_switch(dpid=dpid)
@@ -80,33 +141,15 @@ class DeviceManager:
             raise Exception(f"Ports for switch {dpid} ({switch.name}) not found")
         return ports
 
-    def has_host(self, mac_addr: str) -> bool:
-        if mac_addr in [dev.client_mac for dev in self.attachment_points.values()]:
-            return True
-        return False
-
-    def has_ip(self, ip: str) -> bool:
-        return ip in [dev.client_ip for dev in self.attachment_points.values()]
-
     def get_attachment_point_by_mac(self, mac_addr: str) -> AttachmentPoint:
         try:
-            ap = [
-                ap
-                for ap in self.attachment_points.values()
-                if ap.client_mac == mac_addr
-            ][0]
-            return ap
+            return self.attachment_points[mac_addr]
         except IndexError:
             raise Exception(f"Attachment point {mac_addr=} not found")
 
-    def has_host_moved(self, mac_addr: str, dpid: int, current_port: int):
-        current_switch = self.get_switch(dpid=dpid)
-        current_ap = self.get_attachment_point_by_mac(mac_addr=mac_addr)
-
-        if (current_ap.switch_name != current_switch.name) or (
-            current_ap.switch_port != current_port
-        ):
-            logger.info(
-                f"MAC {mac_addr} changed its AP from {current_ap.switch_name}:{current_ap.switch_port} to {current_switch.name}:{current_port}"
-            )
-            return True
+    def get_attachment_point_by_ip(self, ip_address: str) -> AttachmentPoint:
+        mac = self.ipam.get_mac(ip_address=ip_address)
+        try:
+            return self.attachment_points[mac]
+        except KeyError:
+            raise Exception(f"No AttachmentPoint found for {ip_address=}")

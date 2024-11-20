@@ -1,5 +1,5 @@
 from config.infra_config import Link
-from controller.common import Packet, PacketMatch
+from controller.common import PacketMatch
 from controller.routing import RouteManager
 from tests.conftest import datapath
 
@@ -8,7 +8,7 @@ def test_get_route(device_manager):
     rm = RouteManager(device_manager=device_manager)
     match = PacketMatch(ip_src="10.0.0.1", ip_dst="10.0.0.2", tcp_src=30, tcp_dst=30)
     route = rm.get_route(match=match)
-    assert route.links == [Link(src="r1", dst="r4", src_port=4, dst_port=1)]
+    assert route.path_from_source == [Link(src="r1", dst="r4", src_port=4, dst_port=1)]
 
 
 def test_link_update(device_manager, pkt_ipv4):

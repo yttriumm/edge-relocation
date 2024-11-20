@@ -170,14 +170,12 @@ class FakeDeviceManager(DeviceManager):
             ],
         }
         self.attachment_points = {
-            "10.0.0.1": AttachmentPoint(
-                client_ip="10.0.0.1",
+            "00:00:00:00:00:01": AttachmentPoint(
                 client_mac="00:00:00:00:00:01",
                 switch_name="r1",
                 switch_port=10,
             ),
-            "10.0.0.2": AttachmentPoint(
-                client_ip="10.0.0.2",
+            "00:00:00:00:00:02": AttachmentPoint(
                 client_mac="00:00:00:00:00:02",
                 switch_name="r4",
                 switch_port=10,

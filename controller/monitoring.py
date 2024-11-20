@@ -24,7 +24,6 @@ class Monitoring:
             Tuple[int, int], float
         ] = {}  # (datapath, portno) : timestamp
         self.receive_times: Dict[Tuple[int, int], float] = {}
-        self.delay_data: Dict[Link, float] = {}
 
     @staticmethod
     def is_monitoring_packet(pkt: Packet):
@@ -34,6 +33,7 @@ class Monitoring:
 
     def start(self):
         spawn(self.main_loop)
+        pass
 
     def main_loop(self):
         while True:
@@ -55,9 +55,6 @@ class Monitoring:
             for port in ports:
                 self.send_times[(datapath.id, port.number)] = timestamp_ms()  # type: ignore
                 send_packet(datapath=datapath, port=port.number, pkt=probe_packet)
-                self.logger.debug(
-                    "Sent probe packet to switch %s port %s", switch, port.number
-                )
 
     def handle_packet_in(self, dpid: int, in_port: int, **_):
         ts = timestamp_ms()
@@ -68,7 +65,6 @@ class Monitoring:
         source_switch = self.device_manager.get_switch(switch_name=link.src)
         send_time = self.send_times[(int(source_switch.dpid), link.src_port)]
         delay = ts - send_time
-        self.delay_data[link] = delay
         self.handle_new_delay_data(link=link, delay=delay)
 
     @functools.lru_cache

@@ -16,8 +16,7 @@
 
 # a simple ICMP Echo Responder
 
-import ipaddress
-from typing import Dict, List, Optional
+from typing import List, Optional
 import logging
 from ryu.lib import addrconv
 from ryu.lib.packet import dhcp
@@ -28,9 +27,8 @@ from ryu.lib.packet import udp
 from ryu.lib.packet import arp
 from ryu.ofproto import ofproto_v1_3
 from ryu.controller.controller import Datapath
-
-from config.domain_config import DomainConfig, Network
-from controller.common import Packet, send_packet, Port
+from config.domain_config import DomainConfig
+from controller.common import Packet, send_packet
 from controller.device_manager import DeviceManager
 from controller.ipam import IPAM
 
@@ -71,7 +69,7 @@ class DHCPResponder:
             0, dhcp.option(tag=51, value=lease_time.to_bytes(4, byteorder="big"))
         )
         req.options.option_list.insert(0, dhcp.option(tag=1, value=self.bin_netmask))
-        req.options.option_list.insert(0, dhcp.option(tag=3, value=bin_gateway))
+        # req.options.option_list.insert(0, dhcp.option(tag=3, value=bin_gateway))
         req.options.option_list.insert(0, dhcp.option(tag=53, value=b"\x05"))
         req.options.option_list.insert(0, dhcp.option(tag=12, value=self.bin_hostname))
 
@@ -117,7 +115,7 @@ class DHCPResponder:
         # disc.options.option_list.remove(
         #     next(opt for opt in disc.options.option_list if opt.tag == 12))
         disc.options.option_list.insert(0, dhcp.option(tag=1, value=self.bin_netmask))
-        disc.options.option_list.insert(0, dhcp.option(tag=3, value=bin_gateway))
+        # disc.options.option_list.insert(0, dhcp.option(tag=3, value=bin_gateway))
         disc.options.option_list.insert(0, dhcp.option(tag=6, value=self.bin_dns))
         disc.options.option_list.insert(0, dhcp.option(tag=12, value=self.bin_hostname))
         disc.options.option_list.insert(0, dhcp.option(tag=53, value=b"\x02"))
@@ -192,6 +190,7 @@ class DHCPResponder:
                 network.network.name,
                 ip,
             )
+            self.device_manager.handle_ip_assignment(mac_address=hw_addr, ip_address=ip)
             return ip
         elif dhcp_state == "DHCPRELEASE":
             self.ipam.release_ip_allocation(mac_address=hw_addr)
