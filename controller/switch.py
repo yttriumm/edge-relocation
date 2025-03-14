@@ -1,51 +1,52 @@
 import logging
+from typing import Optional
 from ryu.base.app_manager import RyuApp
 from ryu.ofproto import ofproto_v1_3
 from ryu.controller.handler import set_ev_cls, MAIN_DISPATCHER, CONFIG_DISPATCHER
 from ryu.controller import ofp_event
 from ryu.controller.controller import Datapath
-from ryu.ofproto import ofproto_v1_3_parser
 from ryu.ofproto.ofproto_v1_3_parser import OFPPacketOut, OFPPort
-from ryu.lib.packet import packet
-from config.domain_config import DomainConfig
-from config import DOMAIN_CONFIG_PATH, INFRA_CONFIG_PATH
-from config.infra_config import InfraConfig
-from controller.device_manager import DeviceManager
-from controller.dhcp import DHCPResponder
-from controller.common import (
-    Packet,
-    Port,
-    remove_flows,
-)
-from controller.ipam import IPAM
-from controller.monitoring import Monitoring
-from controller.routing import RouteManager
+from controller.models.models import Packet, Port
+from controller.services.dhcp import DHCPResponder
+from controller.services.monitoring import Monitoring
+from controller.config.domain_config import DomainConfig
+from controller.config import DOMAIN_CONFIG_PATH, INFRA_CONFIG_PATH
+from controller.config.infra_config import InfraConfig
+from controller.services.device_manager import DeviceManager
+from controller.services.routing import RouteManager
+from controller.utils.helpers import rm_all_flows
+from controller.services.ipam import IPAM
+from controller.services import parser, ofp
 from controller.api.controller_api import ControllerApi
 
 logger = logging.getLogger(__name__)
-parser = ofproto_v1_3_parser
-ofp = ofproto_v1_3
+file_logger = logging.getLogger("file")
 
 
 class SDNSwitch(RyuApp):
     OFP_VERSIONS = [ofproto_v1_3.OFP_VERSION]
 
-    def __init__(self, *args, **kwargs):
+    def __init__(
+        self,
+        *args,
+        infra_config: Optional[InfraConfig] = None,
+        domain_config: Optional[DomainConfig] = None,
+        ipam: Optional[IPAM] = None,
+        monitoring: Optional[Monitoring] = None,
+        route_manager: Optional[RouteManager] = None,
+        dhcp_responder: Optional[DHCPResponder] = None,
+        device_manager: Optional[DeviceManager] = None,
+        **kwargs,
+    ):
         super(SDNSwitch, self).__init__(*args, **kwargs)
-        self.config = InfraConfig.from_file(INFRA_CONFIG_PATH)
-        self.domain_config = DomainConfig.from_file(DOMAIN_CONFIG_PATH)
-        self.ipam = IPAM(self.domain_config)
-        self.device_manager = DeviceManager(config=self.config, ipam=self.ipam)
-        self.route_manager = RouteManager(device_manager=self.device_manager)
-        self.monitoring = Monitoring(
-            infra_config=self.config, device_manager=self.device_manager
-        )
-        self.dhcp_server = DHCPResponder(
-            domain_config=self.domain_config,
-            device_manager=self.device_manager,
-            ipam=self.ipam,
-        )
-        self.monitoring.start()
+        self.config = infra_config or InfraConfig.from_file(INFRA_CONFIG_PATH)
+        self.domain_config = domain_config or DomainConfig.from_file(DOMAIN_CONFIG_PATH)
+        self.ipam = ipam or IPAM()
+        self.monitoring = monitoring or Monitoring()
+        self.routing = route_manager or RouteManager()
+        self.dhcp = dhcp_responder or DHCPResponder()
+        self.device_manager = device_manager or DeviceManager()
+        self.ignore_timeout = 5
 
     def start(self):
         super().start()
@@ -57,7 +58,7 @@ class SDNSwitch(RyuApp):
         datapath = ev.msg.datapath
         self.device_manager.add_datapath(datapath)
         self.request_port_stats(datapath)
-        remove_flows(datapath)
+        rm_all_flows(datapath=datapath)
         self.install_default_rules(datapath)
 
     @set_ev_cls(ofp_event.EventOFPPortDescStatsReply, MAIN_DISPATCHER)  # type: ignore
@@ -80,23 +81,26 @@ class SDNSwitch(RyuApp):
         msg = ev.msg
         dp = msg.datapath
         in_port: int = msg.match["in_port"]
-        pkt = Packet(pkt=packet.Packet(msg.data))
+        pkt = Packet.from_event(event=ev)
         if self.should_ignore_pkt(packet=pkt):
             return
         if Monitoring.is_monitoring_packet(pkt=pkt):
-            self.monitoring.handle_packet_in(dpid=dp.id, in_port=in_port, packet=pkt)
+            self.monitoring.handle_packet_in(ev=ev)
             return
+        file_logger.debug(str(pkt))
         self.logger.debug(str(pkt))
         self.device_manager.handle_packet_in(pkt=pkt, in_port=in_port, datapath=dp)
-        if pkt.arp:
-            self.dhcp_server.respond_arp(dp, in_port, pkt.arp)
-            return
-        if pkt.dhcp:
-            self.dhcp_server.handle_dhcp(dp, in_port, pkt)
+        if pkt.arp or pkt.dhcp:
+            self.dhcp.handle_packet_in(ev)
             return
         if pkt.ipv4:
-            self.route_manager.handle_packet_in(pkt=pkt, datapath=dp, in_port=in_port)
+            self.routing.async_handle_packet_in(ev=ev)
             return
+
+    @set_ev_cls(ofp_event.EventOFPBarrierReply, MAIN_DISPATCHER)  # type: ignore
+    def barrier_reply_handler(self, ev):
+        self.logger.debug("OFPBarrierReply received")
+        self.routing.ack_barrier(datapath=ev.msg.datapath, xid=ev.msg.xid)  # type: ignore
 
     def request_port_stats(self, datapath):
         req = parser.OFPPortDescStatsRequest(datapath, 0)
@@ -141,5 +145,8 @@ class SDNSwitch(RyuApp):
         ]:
             return True
         if packet.ipv4 and packet.ipv4.dst == "8.8.8.8":
+            return True
+        if packet.ipv4 and self.routing.is_flow_transient(match=packet.match):
+            file_logger.debug(f"Transient: {str(packet)}")
             return True
         return False

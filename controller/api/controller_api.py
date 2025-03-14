@@ -1,9 +1,9 @@
-import threading
-from misc.singleton import SingletonMeta
 from controller.api import app
+from ryu.lib.hub import WSGIServer, spawn
+from controller.utils.singleton import Singleton
 
 
-class ControllerApi(metaclass=SingletonMeta):
+class ControllerApi(metaclass=Singleton):
     @classmethod
     def setup(cls, controller):
         from controller.switch import SDNSwitch
@@ -12,5 +12,8 @@ class ControllerApi(metaclass=SingletonMeta):
 
     @classmethod
     def start(cls):
-        t = threading.Thread(target=app.run, kwargs=dict(host="0.0.0.0", port=2000))
-        t.start()
+        def run_server():
+            server = WSGIServer(("0.0.0.0", 3000), app)
+            server.serve_forever()
+
+        spawn(run_server)

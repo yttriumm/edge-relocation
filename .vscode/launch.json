@@ -10,6 +10,20 @@
             "request": "launch",
             "program": "main.py",
             "console": "integratedTerminal",
+            "justMyCode": false
+        },
+        {
+            "name": "Python: Current File",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            // "cwd": "./hello"
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "PYTHONPATH": "$PYTHONPATH:${workspaceFolder}"
+            }
         }
     ]
 }
