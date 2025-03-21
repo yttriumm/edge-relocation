@@ -41,11 +41,22 @@ class SDNSwitch(RyuApp):
         super(SDNSwitch, self).__init__(*args, **kwargs)
         self.config = infra_config or InfraConfig.from_file(INFRA_CONFIG_PATH)
         self.domain_config = domain_config or DomainConfig.from_file(DOMAIN_CONFIG_PATH)
+        ### Dependencies
         self.ipam = ipam or IPAM()
-        self.monitoring = monitoring or Monitoring()
-        self.routing = route_manager or RouteManager()
-        self.dhcp = dhcp_responder or DHCPResponder()
-        self.device_manager = device_manager or DeviceManager()
+        self.device_manager = device_manager or DeviceManager(
+            config=self.config, ipam=self.ipam, domain_config=self.domain_config
+        )
+        self.monitoring = monitoring or Monitoring(
+            device_manager=self.device_manager, infra_config=self.config
+        )
+        self.routing = route_manager or RouteManager(
+            device_manager=self.device_manager, ipam=self.ipam
+        )
+        self.dhcp = dhcp_responder or DHCPResponder(
+            ipam=self.ipam,
+            domain_config=self.domain_config,
+            device_manager=self.device_manager,
+        )
         self.ignore_timeout = 5
 
     def start(self):

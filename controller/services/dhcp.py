@@ -239,7 +239,13 @@ class DHCPResponder:
             ports = self.device_manager.get_ports(dpid=dpid)
             mac = [p for p in ports if p.number == in_port][0].mac
         else:
-            ap = self.device_manager.get_attachment_point(ip_address=arp_req.dst_ip)
+            try:
+                ap = self.device_manager.get_attachment_point(ip_address=arp_req.dst_ip)
+            except Exception:
+                self.logger.info(
+                    f"Ignoring ARP request from {arp_req.src_ip} about {arp_req.dst_ip} (not found)"
+                )
+                return
             mac = ap.client_mac
         arp_pkt = self._assemble_arp_pkt(arp_req=arp_req, unknown_mac=mac)
         send_packet(pkt=arp_pkt, datapath=datapath, port=in_port)

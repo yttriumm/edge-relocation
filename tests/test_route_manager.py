@@ -1,6 +1,7 @@
 # from unittest.mock import patch
 
 from unittest.mock import call, patch
+
 # from config.infra_config import Link
 # from controller.models.models import PacketMatch
 # from controller.models.models import Route
@@ -10,6 +11,25 @@ from unittest.mock import call, patch
 
 from controller.config.infra_config import Link
 from controller.models.models import FlowModOperation, FlowRule, PacketMatch, Route
+from controller.switch import SDNSwitch
+from tests.mocks import create_mock_ping
+from ryu.lib.hub import joinall
+
+
+def test_create_route(switch_in_scenario: SDNSwitch):
+    switch_in_scenario.packet_in_handler(
+        create_mock_ping(
+            dpid=2,
+            in_port=2,
+            eth_src="aa:bb:00:00:00:01",
+            eth_dst="aa:bb:00:00:00:02",
+            ip_src="30.30.30.2",
+            ip_dst="30.30.30.3",
+        )
+    )
+    joinall(switch_in_scenario.routing.threads)
+    expected_route = list(switch_in_scenario.routing.routes.values())[0]
+    assert ["r2", "r3"] == [link.src for link in expected_route.path]
 
 
 def test_get_route(routing_manager):

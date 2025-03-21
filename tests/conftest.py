@@ -21,9 +21,12 @@ from tests.mocks import (
     FakeMonitoring,
     FakeRouteManager,
     FakeSwitch,
+    create_mock_dhcp_request_event,
+    create_mock_ping,
     create_mock_switch_features,
     create_port_stats_reply,
 )
+from ryu.lib.hub import joinall
 
 
 @pytest.fixture
@@ -39,7 +42,9 @@ def infra_config():
 @pytest.fixture
 def fake_switch(domain_config, infra_config):
     ipam = FakeIPAM(domain_config=domain_config)
-    device_manager = FakeDeviceManager(config=infra_config, domain_config=domain_config)
+    device_manager = FakeDeviceManager(
+        config=infra_config, domain_config=domain_config, ipam=ipam
+    )
     monitoring = FakeMonitoring(
         device_manager=device_manager,
         infra_config=infra_config,
@@ -230,7 +235,19 @@ def switch_in_scenario(fake_switch: SDNSwitch):
         dp = FakeDatapath(id=int(portset[0].datapath))
         ports_stats_reply = create_port_stats_reply(datapath=dp, ports=portset)
         fake_switch.port_desc_stats_reply_handler(ev=ports_stats_reply)
+    fake_switch.packet_in_handler(
+        create_mock_dhcp_request_event(
+            dpid=2, in_port=2, request_mac="aa:bb:00:00:00:01"
+        )
+    )
+    fake_switch.packet_in_handler(
+        create_mock_dhcp_request_event(
+            dpid=4, in_port=2, request_mac="aa:bb:00:00:00:02"
+        )
+    )
+    joinall(fake_switch.routing.threads)
     yield fake_switch
+    joinall(fake_switch.threads)
 
 
 # import logging

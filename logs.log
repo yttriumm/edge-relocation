@@ -6161,3 +6161,952 @@
 2025-03-10 13:35:23 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:16
 2025-03-10 13:35:25 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.5' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.5']
 2025-03-10 13:35:25 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.5' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.5']
+2025-03-17 15:00:53 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:fb
+2025-03-17 15:00:53 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:fb
+2025-03-17 15:00:53 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:02
+2025-03-17 15:00:53 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:02
+2025-03-17 15:00:55 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=7,tag=61,value=b'\x01R\xaa\xaa\xaa\xaa\xa1'), option(length=17,tag=55,value=b'\x01\x02\x06\x0c\x0f\x1a\x1cy\x03!()*w\xf9\xfc\x11'), option(length=2,tag=57,value=b'\x02@'), option(length=4,tag=50,value=b'\xc0\xa8\x1f\xab'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009')],options_len=79)
+2025-03-17 15:00:55 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=7,tag=61,value=b'\x01R\xaa\xaa\xaa\xaa\xa1'), option(length=17,tag=55,value=b'\x01\x02\x06\x0c\x0f\x1a\x1cy\x03!()*w\xf9\xfc\x11'), option(length=2,tag=57,value=b'\x02@'), option(length=4,tag=50,value=b'\xc0\xa8\x1f\xab'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009')],options_len=79)
+2025-03-17 15:00:55 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x03'), option(length=7,tag=61,value=b'\x01R\xaa\xaa\xaa\xaa\xa1'), option(length=17,tag=55,value=b'\x01\x02\x06\x0c\x0f\x1a\x1cy\x03!()*w\xf9\xfc\x11'), option(length=2,tag=57,value=b'\x02@'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009')],options_len=85)
+2025-03-17 15:00:55 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x03'), option(length=7,tag=61,value=b'\x01R\xaa\xaa\xaa\xaa\xa1'), option(length=17,tag=55,value=b'\x01\x02\x06\x0c\x0f\x1a\x1cy\x03!()*w\xf9\xfc\x11'), option(length=2,tag=57,value=b'\x02@'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009')],options_len=85)
+2025-03-17 15:00:55 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 15:00:55 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 15:00:55 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:16
+2025-03-17 15:00:55 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:16
+2025-03-17 15:00:55 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:16
+2025-03-17 15:00:55 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:16
+2025-03-17 15:00:55 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:16
+2025-03-17 15:00:55 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:16
+2025-03-17 15:00:57 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=7,tag=61,value=b'\x01R\xaa\xaa\xaa\xaa\xa2'), option(length=17,tag=55,value=b'\x01\x02\x06\x0c\x0f\x1a\x1cy\x03!()*w\xf9\xfc\x11'), option(length=2,tag=57,value=b'\x02@'), option(length=4,tag=50,value=b'\xc0\xa8\x1f\xac'), option(length=5,tag=12,value=b'host2')],options_len=53)
+2025-03-17 15:00:57 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=7,tag=61,value=b'\x01R\xaa\xaa\xaa\xaa\xa2'), option(length=17,tag=55,value=b'\x01\x02\x06\x0c\x0f\x1a\x1cy\x03!()*w\xf9\xfc\x11'), option(length=2,tag=57,value=b'\x02@'), option(length=4,tag=50,value=b'\xc0\xa8\x1f\xac'), option(length=5,tag=12,value=b'host2')],options_len=53)
+2025-03-17 15:00:57 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x03'), option(length=7,tag=61,value=b'\x01R\xaa\xaa\xaa\xaa\xa2'), option(length=17,tag=55,value=b'\x01\x02\x06\x0c\x0f\x1a\x1cy\x03!()*w\xf9\xfc\x11'), option(length=2,tag=57,value=b'\x02@'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x03'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=5,tag=12,value=b'host2')],options_len=59)
+2025-03-17 15:00:57 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x03'), option(length=7,tag=61,value=b'\x01R\xaa\xaa\xaa\xaa\xa2'), option(length=17,tag=55,value=b'\x01\x02\x06\x0c\x0f\x1a\x1cy\x03!()*w\xf9\xfc\x11'), option(length=2,tag=57,value=b'\x02@'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x03'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=5,tag=12,value=b'host2')],options_len=59)
+2025-03-17 15:00:57 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 15:00:57 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 15:00:57 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:16
+2025-03-17 15:00:57 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:16
+2025-03-17 15:00:57 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:16
+2025-03-17 15:00:57 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:16
+2025-03-17 15:00:57 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 15:00:57 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 15:00:57 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:16
+2025-03-17 15:00:57 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:16
+2025-03-17 15:00:59 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 15:00:59 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 15:00:59 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 15:00:59 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 15:01:01 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 15:01:01 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 15:01:20 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:02
+2025-03-17 15:01:20 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:02
+2025-03-17 15:01:25 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:fb
+2025-03-17 15:01:25 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:fb
+2025-03-17 15:01:25 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:fb
+2025-03-17 15:01:25 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:fb
+2025-03-17 15:01:29 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:02
+2025-03-17 15:01:29 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:02
+2025-03-17 15:02:18 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:02
+2025-03-17 15:02:18 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:02
+2025-03-17 15:02:29 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:fb
+2025-03-17 15:02:29 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:fb
+2025-03-17 15:02:29 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.1']
+2025-03-17 15:02:29 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.1']
+2025-03-17 15:02:29 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.1']
+2025-03-17 15:02:29 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.1']
+2025-03-17 15:02:29 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:fb
+2025-03-17 15:02:29 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:fb
+2025-03-17 15:02:30 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 15:02:30 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 15:02:30 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x03'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x03'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 15:02:30 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x03'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x03'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 15:02:30 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x03'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 15:02:30 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x03'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 15:02:30 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x03'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=68)
+2025-03-17 15:02:30 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x03'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=68)
+2025-03-17 15:02:30 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 15:02:30 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 15:02:30 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:16
+2025-03-17 15:02:30 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:16
+2025-03-17 15:02:30 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 15:02:30 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 15:02:30 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:16
+2025-03-17 15:02:30 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:16
+2025-03-17 15:02:30 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:16
+2025-03-17 15:02:30 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:16
+2025-03-17 15:02:31 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:16
+2025-03-17 15:02:31 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:16
+2025-03-17 15:02:32 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 15:02:32 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 15:02:32 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 15:02:32 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 15:02:34 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 15:02:34 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 15:02:34 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 15:02:34 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 15:02:39 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:02
+2025-03-17 15:02:39 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:02
+2025-03-17 15:02:48 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 15:02:48 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 15:02:49 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 15:02:49 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 15:02:50 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 15:02:50 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 15:03:29 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 15:03:29 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 15:03:30 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 15:03:30 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 15:03:31 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 15:03:31 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 15:03:43 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 15:03:43 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 15:03:44 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 15:03:44 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 15:03:45 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 15:03:45 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 15:04:09 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.1']
+2025-03-17 15:04:09 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.1']
+2025-03-17 15:04:09 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.1']
+2025-03-17 15:04:09 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.1']
+2025-03-17 15:04:09 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x03'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 15:04:09 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x03'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 15:04:09 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 15:04:09 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 15:04:09 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x03'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 15:04:09 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x03'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 15:04:09 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x03'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x03'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=68)
+2025-03-17 15:04:09 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x03'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x03'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=68)
+2025-03-17 15:04:10 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:02
+2025-03-17 15:04:10 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:02
+2025-03-17 15:04:37 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:fb
+2025-03-17 15:04:37 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:fb
+2025-03-17 15:04:38 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:fb
+2025-03-17 15:04:38 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:fb
+2025-03-17 15:05:00 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:02
+2025-03-17 15:05:00 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:02
+2025-03-17 15:05:34 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.1']
+2025-03-17 15:05:34 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.1']
+2025-03-17 15:05:34 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.1']
+2025-03-17 15:05:34 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.1']
+2025-03-17 15:05:35 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 15:05:35 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 15:05:35 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x03'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 15:05:35 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x03'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 15:05:35 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x03'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 15:05:35 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x03'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 15:05:35 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x03'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x03'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=68)
+2025-03-17 15:05:35 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x03'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x03'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=68)
+2025-03-17 15:07:25 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.1']
+2025-03-17 15:07:25 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.1']
+2025-03-17 15:07:29 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 15:07:29 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 15:07:33 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 15:07:33 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 15:07:36 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 15:07:36 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 15:07:59 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 15:07:59 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 15:07:59 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:02
+2025-03-17 15:07:59 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:02
+2025-03-17 15:07:59 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x03'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 15:07:59 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x03'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 15:08:06 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x03'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 15:08:06 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x03'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 15:08:06 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 15:08:06 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 15:08:06 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x03'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x03'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=68)
+2025-03-17 15:08:06 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x03'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x03'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=68)
+2025-03-17 15:08:06 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x03'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 15:08:06 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x03'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 15:08:16 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 15:08:16 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 15:08:17 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 15:08:17 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 15:08:18 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 15:08:18 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 15:08:48 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.1']
+2025-03-17 15:08:48 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.1']
+2025-03-17 15:10:55 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 15:10:55 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 15:11:06 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 15:11:06 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 15:11:14 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:fb
+2025-03-17 15:11:14 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:fb
+2025-03-17 15:14:30 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='169.254.14.101' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.1']
+2025-03-17 15:14:30 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='169.254.14.101' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.1']
+2025-03-17 15:14:31 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x03'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 15:14:31 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x03'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 15:14:31 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 15:14:31 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 15:14:31 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x03'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=68)
+2025-03-17 15:14:31 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x03'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=68)
+2025-03-17 15:14:31 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x03'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x03'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 15:14:31 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x03'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x03'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 15:14:31 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 15:14:31 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 15:14:31 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 15:14:31 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 15:14:31 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:16
+2025-03-17 15:14:31 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:16
+2025-03-17 15:14:31 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:16
+2025-03-17 15:14:31 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:16
+2025-03-17 15:14:31 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:16
+2025-03-17 15:14:31 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:16
+2025-03-17 15:14:31 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:16
+2025-03-17 15:14:31 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:16
+2025-03-17 15:14:33 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 15:14:33 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 15:14:33 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 15:14:33 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 15:14:35 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 15:14:35 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 15:14:35 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 15:14:35 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 15:14:39 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 15:14:39 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 15:14:39 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=1]]
+2025-03-17 15:14:39 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=1]]
+2025-03-17 15:14:39 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=1]]
+2025-03-17 15:14:39 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 15:14:39 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 15:15:00 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 15:15:00 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 15:15:13 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:02
+2025-03-17 15:15:13 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:02
+2025-03-17 16:28:36 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.1']
+2025-03-17 16:28:36 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.1']
+2025-03-17 16:28:36 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.1']
+2025-03-17 16:28:36 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.1']
+2025-03-17 16:28:36 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='30.30.30.2' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x07'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009')],options_len=64)
+2025-03-17 16:28:36 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='30.30.30.2' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x07'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009')],options_len=64)
+2025-03-17 16:28:37 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x03'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 16:28:37 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x03'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 16:28:37 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x03'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x03'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 16:28:37 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x03'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x03'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 16:28:37 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 16:28:37 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 16:28:37 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:16
+2025-03-17 16:28:37 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:16
+2025-03-17 16:28:37 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 16:28:37 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 16:28:37 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x03'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=68)
+2025-03-17 16:28:37 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x03'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=68)
+2025-03-17 16:28:37 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 16:28:37 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 16:28:37 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:16
+2025-03-17 16:28:37 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:16
+2025-03-17 16:28:37 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:16
+2025-03-17 16:28:37 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:16
+2025-03-17 16:28:37 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:16
+2025-03-17 16:28:37 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:16
+2025-03-17 16:28:39 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 16:28:39 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 16:28:39 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 16:28:39 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 16:28:41 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 16:28:41 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 16:28:41 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 16:28:41 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 16:28:43 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 16:28:43 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 16:28:43 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=1]]
+2025-03-17 16:28:43 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=1]]
+2025-03-17 16:28:43 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=1]]
+2025-03-17 16:28:43 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 16:28:43 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 16:31:04 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 16:31:04 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 16:31:04 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 16:31:04 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 16:31:19 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=17]]
+2025-03-17 16:31:19 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=17]]
+2025-03-17 16:31:19 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=17]]
+2025-03-17 16:31:30 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=28]]
+2025-03-17 16:31:30 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=28]]
+2025-03-17 16:31:30 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=28]]
+2025-03-17 16:31:30 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 16:31:30 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 16:31:54 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 16:31:54 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 16:31:57 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 16:31:57 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 16:32:19 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 16:32:19 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 16:32:43 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 16:32:43 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 16:32:50 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 16:32:50 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 16:32:59 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.1']
+2025-03-17 16:32:59 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.1']
+2025-03-17 16:32:59 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.1']
+2025-03-17 16:32:59 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.1']
+2025-03-17 16:32:59 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='30.30.30.2' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x07'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009')],options_len=64)
+2025-03-17 16:32:59 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='30.30.30.2' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x07'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009')],options_len=64)
+2025-03-17 16:32:59 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 16:32:59 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 16:32:59 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x03'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 16:32:59 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x03'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 16:32:59 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x03'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=68)
+2025-03-17 16:32:59 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x03'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=68)
+2025-03-17 16:32:59 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x03'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x03'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 16:32:59 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x03'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x03'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 16:32:59 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 16:32:59 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 16:32:59 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 16:32:59 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 16:32:59 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:16
+2025-03-17 16:32:59 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:16
+2025-03-17 16:32:59 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:16
+2025-03-17 16:32:59 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:16
+2025-03-17 16:32:59 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:16
+2025-03-17 16:32:59 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:16
+2025-03-17 16:33:00 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 16:33:00 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 16:33:00 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 16:33:00 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 16:33:00 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:16
+2025-03-17 16:33:00 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:16
+2025-03-17 16:33:01 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 16:33:01 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 16:33:01 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 16:33:01 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 16:33:03 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 16:33:03 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 16:33:03 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 16:33:03 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 17:50:31 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.1']
+2025-03-17 17:50:31 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.1']
+2025-03-17 17:50:31 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.1']
+2025-03-17 17:50:31 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.1']
+2025-03-17 17:50:31 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='30.30.30.2' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x07'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009')],options_len=64)
+2025-03-17 17:50:31 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='30.30.30.2' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x07'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009')],options_len=64)
+2025-03-17 17:50:31 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x03'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 17:50:31 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x03'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 17:50:31 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x03'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x03'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 17:50:31 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x03'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x03'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 17:50:31 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 17:50:31 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 17:50:31 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x03'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=68)
+2025-03-17 17:50:31 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x03'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=68)
+2025-03-17 17:50:31 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 17:50:31 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 17:50:31 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:16
+2025-03-17 17:50:31 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:16
+2025-03-17 17:50:31 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 17:50:31 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 17:50:31 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:16
+2025-03-17 17:50:31 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:16
+2025-03-17 17:50:31 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:16
+2025-03-17 17:50:31 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:16
+2025-03-17 17:50:31 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:16
+2025-03-17 17:50:31 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:16
+2025-03-17 17:50:33 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 17:50:33 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 17:50:33 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 17:50:33 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 17:50:34 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 17:50:34 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 17:50:35 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=1]]
+2025-03-17 17:50:35 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=1]]
+2025-03-17 17:50:35 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=1]]
+2025-03-17 17:50:35 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 17:50:35 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 17:50:35 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 17:50:35 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 17:50:35 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 17:50:35 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 17:56:57 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:02
+2025-03-17 17:56:57 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:02
+2025-03-17 18:08:37 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:fb
+2025-03-17 18:08:37 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:fb
+2025-03-17 18:08:38 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:fb
+2025-03-17 18:08:38 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:fb
+2025-03-17 18:20:51 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:02
+2025-03-17 18:20:51 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:02
+2025-03-17 18:50:59 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.1']
+2025-03-17 18:50:59 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.1']
+2025-03-17 18:50:59 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.1']
+2025-03-17 18:50:59 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.1']
+2025-03-17 18:50:59 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='30.30.30.2' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x07'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009')],options_len=64)
+2025-03-17 18:50:59 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='30.30.30.2' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x07'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009')],options_len=64)
+2025-03-17 18:50:59 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 18:50:59 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 18:50:59 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x03'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 18:50:59 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x03'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 18:50:59 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x03'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=68)
+2025-03-17 18:50:59 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x03'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=68)
+2025-03-17 18:50:59 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x03'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x03'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 18:50:59 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x03'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x03'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 18:50:59 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 18:50:59 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 18:50:59 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 18:50:59 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 18:50:59 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:16
+2025-03-17 18:50:59 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:16
+2025-03-17 18:50:59 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:16
+2025-03-17 18:50:59 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:16
+2025-03-17 18:51:00 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:16
+2025-03-17 18:51:00 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:16
+2025-03-17 18:51:00 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:16
+2025-03-17 18:51:00 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:16
+2025-03-17 18:51:01 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 18:51:01 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 18:51:01 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 18:51:01 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 18:51:03 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 18:51:03 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 18:51:03 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 18:51:03 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 18:54:56 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.1']
+2025-03-17 18:54:56 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.1']
+2025-03-17 18:54:56 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.1']
+2025-03-17 18:54:56 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.1']
+2025-03-17 18:54:56 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='30.30.30.2' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x07'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009')],options_len=64)
+2025-03-17 18:54:56 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='30.30.30.2' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x07'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009')],options_len=64)
+2025-03-17 18:54:56 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 18:54:56 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 18:54:56 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x03'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 18:54:56 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x03'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 18:54:56 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x03'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x03'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 18:54:56 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x03'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x03'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 18:54:56 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x03'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=68)
+2025-03-17 18:54:56 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x03'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=68)
+2025-03-17 18:54:56 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 18:54:56 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 18:54:56 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 18:54:56 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 18:54:56 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:16
+2025-03-17 18:54:56 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:16
+2025-03-17 18:54:56 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:16
+2025-03-17 18:54:56 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:16
+2025-03-17 18:54:56 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:16
+2025-03-17 18:54:56 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:16
+2025-03-17 18:54:57 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:16
+2025-03-17 18:54:57 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:16
+2025-03-17 18:54:58 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 18:54:58 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 18:54:58 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 18:54:58 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 18:55:00 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 18:55:00 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 18:55:00 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 18:55:00 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 18:55:30 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:02
+2025-03-17 18:55:30 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:02
+2025-03-17 18:57:08 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.1']
+2025-03-17 18:57:08 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.1']
+2025-03-17 18:57:08 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.1']
+2025-03-17 18:57:08 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.1']
+2025-03-17 18:57:08 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='30.30.30.2' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x07'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009')],options_len=64)
+2025-03-17 18:57:08 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='30.30.30.2' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x07'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009')],options_len=64)
+2025-03-17 18:57:08 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x03'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 18:57:08 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x03'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 18:57:08 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 18:57:08 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 18:57:08 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x03'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x03'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 18:57:08 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x03'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x03'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 18:57:08 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x03'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=68)
+2025-03-17 18:57:08 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x03'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=68)
+2025-03-17 18:57:08 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 18:57:08 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 18:57:08 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 18:57:08 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 18:57:08 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:16
+2025-03-17 18:57:08 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:16
+2025-03-17 18:57:08 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:16
+2025-03-17 18:57:08 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:16
+2025-03-17 18:57:09 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:16
+2025-03-17 18:57:09 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:16
+2025-03-17 18:57:09 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:16
+2025-03-17 18:57:09 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:16
+2025-03-17 18:57:10 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 18:57:10 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 18:57:10 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 18:57:10 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 18:57:12 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 18:57:12 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 18:57:12 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 18:57:12 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 18:59:40 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.1']
+2025-03-17 18:59:40 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.1']
+2025-03-17 18:59:40 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.1']
+2025-03-17 18:59:40 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.1']
+2025-03-17 18:59:40 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='30.30.30.2' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x07'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009')],options_len=64)
+2025-03-17 18:59:40 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='30.30.30.2' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x07'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009')],options_len=64)
+2025-03-17 18:59:40 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x03'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 18:59:40 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x03'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 18:59:40 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 18:59:40 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 18:59:40 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x03'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x03'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 18:59:40 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x03'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x03'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 18:59:40 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x03'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=68)
+2025-03-17 18:59:40 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x03'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=68)
+2025-03-17 18:59:40 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 18:59:40 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 18:59:40 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:16
+2025-03-17 18:59:40 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:16
+2025-03-17 18:59:40 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 18:59:40 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 18:59:40 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:16
+2025-03-17 18:59:40 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:16
+2025-03-17 18:59:41 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:16
+2025-03-17 18:59:41 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:16
+2025-03-17 18:59:41 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:16
+2025-03-17 18:59:41 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:16
+2025-03-17 18:59:42 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 18:59:42 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 18:59:42 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 18:59:42 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 18:59:44 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 18:59:44 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 18:59:44 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=1]]
+2025-03-17 18:59:44 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=1]]
+2025-03-17 18:59:44 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=1]]
+2025-03-17 18:59:44 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 18:59:44 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 18:59:44 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 18:59:44 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 18:59:44 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 18:59:44 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 18:59:47 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=4]]
+2025-03-17 18:59:47 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=4]]
+2025-03-17 18:59:47 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=4]]
+2025-03-17 18:59:51 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=8]]
+2025-03-17 18:59:51 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=8]]
+2025-03-17 18:59:51 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=8]]
+2025-03-17 19:00:27 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:00:27 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:00:34 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 19:00:34 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 19:01:10 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:01:10 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:01:20 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=97]]
+2025-03-17 19:01:20 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=97]]
+2025-03-17 19:01:20 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=97]]
+2025-03-17 19:01:21 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=98]]
+2025-03-17 19:01:21 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=98]]
+2025-03-17 19:01:21 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=98]]
+2025-03-17 19:01:22 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=99]]
+2025-03-17 19:01:22 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=99]]
+2025-03-17 19:01:22 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=99]]
+2025-03-17 19:01:23 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=100]]
+2025-03-17 19:01:23 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=100]]
+2025-03-17 19:01:23 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=100]]
+2025-03-17 19:01:24 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 19:01:24 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 19:01:24 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=101]]
+2025-03-17 19:01:24 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=101]]
+2025-03-17 19:01:24 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=101]]
+2025-03-17 19:01:25 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 19:01:25 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 19:01:25 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=102]]
+2025-03-17 19:01:25 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=102]]
+2025-03-17 19:01:25 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=102]]
+2025-03-17 19:01:26 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 19:01:26 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 19:01:26 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=103]]
+2025-03-17 19:01:26 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=103]]
+2025-03-17 19:01:26 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=103]]
+2025-03-17 19:01:27 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=104]]
+2025-03-17 19:01:27 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=104]]
+2025-03-17 19:01:27 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=104]]
+2025-03-17 19:01:28 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=105]]
+2025-03-17 19:01:28 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=105]]
+2025-03-17 19:01:28 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=105]]
+2025-03-17 19:01:29 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=106]]
+2025-03-17 19:01:29 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=106]]
+2025-03-17 19:01:29 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=106]]
+2025-03-17 19:01:30 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=107]]
+2025-03-17 19:01:30 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=107]]
+2025-03-17 19:01:30 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=107]]
+2025-03-17 19:01:31 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.1']
+2025-03-17 19:01:31 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.1']
+2025-03-17 19:01:31 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.1']
+2025-03-17 19:01:31 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.1']
+2025-03-17 19:01:31 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='30.30.30.2' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x07'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009')],options_len=64)
+2025-03-17 19:01:31 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='30.30.30.2' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x07'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009')],options_len=64)
+2025-03-17 19:01:31 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 19:01:31 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 19:01:31 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x03'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=68)
+2025-03-17 19:01:31 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x03'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=68)
+2025-03-17 19:01:31 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x03'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 19:01:31 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x03'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 19:01:31 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x03'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x03'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 19:01:31 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x03'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x03'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 19:01:31 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 19:01:31 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 19:01:31 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:16
+2025-03-17 19:01:31 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:16
+2025-03-17 19:01:31 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:01:31 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:01:31 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:16
+2025-03-17 19:01:31 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:16
+2025-03-17 19:01:31 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:01:31 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:01:31 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=108]]
+2025-03-17 19:01:31 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=108]]
+2025-03-17 19:01:31 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=108]]
+2025-03-17 19:01:32 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:16
+2025-03-17 19:01:32 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:16
+2025-03-17 19:01:32 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:16
+2025-03-17 19:01:32 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:16
+2025-03-17 19:01:32 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 19:01:32 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 19:01:33 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 19:01:33 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 19:01:33 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:01:33 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:01:35 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 19:01:35 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 19:01:35 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:01:35 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:01:38 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=13]]
+2025-03-17 19:01:38 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=13]]
+2025-03-17 19:01:38 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=13]]
+2025-03-17 19:01:42 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=28]]
+2025-03-17 19:01:42 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=28]]
+2025-03-17 19:01:42 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=28]]
+2025-03-17 19:02:07 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:02:07 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:02:20 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 19:02:20 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 19:02:42 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:02:42 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:02:56 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 19:02:56 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 19:03:17 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:03:17 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:03:31 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 19:03:31 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 19:03:51 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:03:51 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:04:07 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 19:04:07 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 19:04:26 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:04:26 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:04:43 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 19:04:43 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 19:05:01 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:05:01 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:05:19 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 19:05:19 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 19:05:19 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.1']
+2025-03-17 19:05:19 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.1']
+2025-03-17 19:05:19 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.1']
+2025-03-17 19:05:19 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.1']
+2025-03-17 19:05:19 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='30.30.30.2' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x07'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009')],options_len=64)
+2025-03-17 19:05:19 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='30.30.30.2' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x07'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009')],options_len=64)
+2025-03-17 19:05:19 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x03'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 19:05:19 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x03'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 19:05:19 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 19:05:19 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 19:05:19 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x03'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x03'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 19:05:19 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a2' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x03'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x03'), option(length=5,tag=12,value=b'host2'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=64)
+2025-03-17 19:05:19 - file - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x03'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=68)
+2025-03-17 19:05:19 - file.controller.services.device_manager - DEBUG - PacketIn [dhcp_op=1 dhcp_flags=0 dhcp_ciaddr='0.0.0.0' dhcp_yiaddr='0.0.0.0' dhcp_siaddr='0.0.0.0' dhcp_chaddr='52:aa:aa:aa:aa:a1' dhcp_options=options(magic_cookie='99.130.83.99',option_list=[option(length=1,tag=53,value=b'\x03'), option(length=4,tag=54,value=b'\x1e\x1e\x1e\x01'), option(length=4,tag=50,value=b'\x1e\x1e\x1e\x02'), option(length=31,tag=12,value=b'host1-Standard-PC-Q35-ICH9-2009'), option(length=13,tag=55,value=b'\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*')],options_len=68)
+2025-03-17 19:05:19 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:05:19 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:05:19 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:16
+2025-03-17 19:05:19 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:16
+2025-03-17 19:05:19 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 19:05:19 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 19:05:19 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:05:19 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:05:19 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:16
+2025-03-17 19:05:19 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:16
+2025-03-17 19:05:19 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 19:05:19 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 19:05:20 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:16
+2025-03-17 19:05:20 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:16
+2025-03-17 19:05:20 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:16
+2025-03-17 19:05:20 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:16
+2025-03-17 19:05:21 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:05:21 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:05:21 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 19:05:21 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 19:05:23 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:05:23 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:05:23 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 19:05:23 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 19:05:54 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:05:54 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:05:54 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 19:05:54 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 19:06:30 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:06:30 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:06:30 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 19:06:30 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 19:07:06 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:07:06 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:07:16 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 19:07:16 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 19:07:43 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:07:43 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:08:04 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 19:08:04 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 19:08:20 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:08:20 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:08:37 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:fb
+2025-03-17 19:08:37 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:fb
+2025-03-17 19:08:38 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:fb
+2025-03-17 19:08:38 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:fb
+2025-03-17 19:08:53 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 19:08:53 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 19:08:56 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:08:56 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:09:33 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:09:33 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:09:42 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 19:09:42 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 19:10:10 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:10:10 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:10:31 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 19:10:31 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 19:10:47 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:10:47 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:11:21 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 19:11:21 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 19:11:24 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:11:24 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:11:57 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:11:57 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:12:10 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 19:12:10 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 19:12:29 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:12:29 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:12:41 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 19:12:41 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 19:13:02 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:13:02 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:13:13 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 19:13:13 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 19:13:35 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:13:35 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:13:44 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 19:13:44 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a2' arp_src_ip='30.30.30.3' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.2']
+2025-03-17 19:14:03 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2983]]
+2025-03-17 19:14:03 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2983]]
+2025-03-17 19:14:03 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2075]]
+2025-03-17 19:14:03 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2075]]
+2025-03-17 19:14:03 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2983]]
+2025-03-17 19:14:03 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2075]]
+2025-03-17 19:14:03 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2984]]
+2025-03-17 19:14:03 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2984]]
+2025-03-17 19:14:03 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2076]]
+2025-03-17 19:14:03 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2076]]
+2025-03-17 19:14:03 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2984]]
+2025-03-17 19:14:03 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2076]]
+2025-03-17 19:14:04 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=859]]
+2025-03-17 19:14:04 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=859]]
+2025-03-17 19:14:04 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=859]]
+2025-03-17 19:14:04 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2985]]
+2025-03-17 19:14:04 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2985]]
+2025-03-17 19:14:04 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2077]]
+2025-03-17 19:14:04 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2077]]
+2025-03-17 19:14:04 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2985]]
+2025-03-17 19:14:04 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2077]]
+2025-03-17 19:14:04 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2986]]
+2025-03-17 19:14:04 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2986]]
+2025-03-17 19:14:04 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2078]]
+2025-03-17 19:14:04 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2078]]
+2025-03-17 19:14:04 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2986]]
+2025-03-17 19:14:04 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2078]]
+2025-03-17 19:14:04 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2079]]
+2025-03-17 19:14:04 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2079]]
+2025-03-17 19:14:04 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2987]]
+2025-03-17 19:14:04 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2987]]
+2025-03-17 19:14:04 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2079]]
+2025-03-17 19:14:04 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2987]]
+2025-03-17 19:14:04 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2988]]
+2025-03-17 19:14:04 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2988]]
+2025-03-17 19:14:04 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2080]]
+2025-03-17 19:14:04 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2080]]
+2025-03-17 19:14:04 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2988]]
+2025-03-17 19:14:04 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2080]]
+2025-03-17 19:14:05 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=860]]
+2025-03-17 19:14:05 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=860]]
+2025-03-17 19:14:05 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=860]]
+2025-03-17 19:14:05 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2989]]
+2025-03-17 19:14:05 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2989]]
+2025-03-17 19:14:05 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2081]]
+2025-03-17 19:14:05 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2081]]
+2025-03-17 19:14:05 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2989]]
+2025-03-17 19:14:05 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2081]]
+2025-03-17 19:14:05 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2082]]
+2025-03-17 19:14:05 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2082]]
+2025-03-17 19:14:05 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2990]]
+2025-03-17 19:14:05 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2990]]
+2025-03-17 19:14:05 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2082]]
+2025-03-17 19:14:05 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2990]]
+2025-03-17 19:14:05 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2991]]
+2025-03-17 19:14:05 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2991]]
+2025-03-17 19:14:05 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2083]]
+2025-03-17 19:14:05 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2083]]
+2025-03-17 19:14:05 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2991]]
+2025-03-17 19:14:05 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2083]]
+2025-03-17 19:14:05 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2084]]
+2025-03-17 19:14:05 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2084]]
+2025-03-17 19:14:05 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2992]]
+2025-03-17 19:14:05 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2992]]
+2025-03-17 19:14:05 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2084]]
+2025-03-17 19:14:05 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2992]]
+2025-03-17 19:14:06 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=861]]
+2025-03-17 19:14:06 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=861]]
+2025-03-17 19:14:06 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=861]]
+2025-03-17 19:14:06 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2993]]
+2025-03-17 19:14:06 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2993]]
+2025-03-17 19:14:06 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2085]]
+2025-03-17 19:14:06 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2085]]
+2025-03-17 19:14:06 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2993]]
+2025-03-17 19:14:06 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2085]]
+2025-03-17 19:14:06 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2086]]
+2025-03-17 19:14:06 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2086]]
+2025-03-17 19:14:06 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2086]]
+2025-03-17 19:14:06 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2994]]
+2025-03-17 19:14:06 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2994]]
+2025-03-17 19:14:06 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2994]]
+2025-03-17 19:14:06 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2087]]
+2025-03-17 19:14:06 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2087]]
+2025-03-17 19:14:06 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2087]]
+2025-03-17 19:14:06 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2995]]
+2025-03-17 19:14:06 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2995]]
+2025-03-17 19:14:06 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2995]]
+2025-03-17 19:14:06 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2088]]
+2025-03-17 19:14:06 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2088]]
+2025-03-17 19:14:06 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2088]]
+2025-03-17 19:14:07 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2996]]
+2025-03-17 19:14:07 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2996]]
+2025-03-17 19:14:07 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2996]]
+2025-03-17 19:14:07 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=862]]
+2025-03-17 19:14:07 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=862]]
+2025-03-17 19:14:07 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=862]]
+2025-03-17 19:14:07 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2089]]
+2025-03-17 19:14:07 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2089]]
+2025-03-17 19:14:07 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2089]]
+2025-03-17 19:14:07 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2997]]
+2025-03-17 19:14:07 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2997]]
+2025-03-17 19:14:07 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2997]]
+2025-03-17 19:14:07 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2090]]
+2025-03-17 19:14:07 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2090]]
+2025-03-17 19:14:07 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2090]]
+2025-03-17 19:14:07 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2998]]
+2025-03-17 19:14:07 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2998]]
+2025-03-17 19:14:07 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2998]]
+2025-03-17 19:14:07 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2091]]
+2025-03-17 19:14:07 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2091]]
+2025-03-17 19:14:07 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2091]]
+2025-03-17 19:14:07 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2999]]
+2025-03-17 19:14:07 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2999]]
+2025-03-17 19:14:07 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2999]]
+2025-03-17 19:14:08 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2092]]
+2025-03-17 19:14:08 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2092]]
+2025-03-17 19:14:08 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2092]]
+2025-03-17 19:14:08 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=3000]]
+2025-03-17 19:14:08 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=3000]]
+2025-03-17 19:14:08 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=3000]]
+2025-03-17 19:14:08 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:14:08 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:14:08 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=863]]
+2025-03-17 19:14:08 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=863]]
+2025-03-17 19:14:08 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=863]]
+2025-03-17 19:14:08 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2093]]
+2025-03-17 19:14:08 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2093]]
+2025-03-17 19:14:08 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2093]]
+2025-03-17 19:14:08 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=3001]]
+2025-03-17 19:14:08 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=3001]]
+2025-03-17 19:14:08 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=3001]]
+2025-03-17 19:14:08 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2094]]
+2025-03-17 19:14:08 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2094]]
+2025-03-17 19:14:08 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2094]]
+2025-03-17 19:14:08 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=3002]]
+2025-03-17 19:14:08 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=3002]]
+2025-03-17 19:14:08 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=3002]]
+2025-03-17 19:14:08 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2095]]
+2025-03-17 19:14:08 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2095]]
+2025-03-17 19:14:08 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2095]]
+2025-03-17 19:14:08 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=3003]]
+2025-03-17 19:14:08 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=3003]]
+2025-03-17 19:14:08 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=3003]]
+2025-03-17 19:14:09 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2096]]
+2025-03-17 19:14:09 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2096]]
+2025-03-17 19:14:09 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2096]]
+2025-03-17 19:14:09 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=3004]]
+2025-03-17 19:14:09 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=3004]]
+2025-03-17 19:14:09 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=3004]]
+2025-03-17 19:14:09 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:14:09 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:14:09 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=864]]
+2025-03-17 19:14:09 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=864]]
+2025-03-17 19:14:09 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=864]]
+2025-03-17 19:14:09 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2097]]
+2025-03-17 19:14:09 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2097]]
+2025-03-17 19:14:09 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2097]]
+2025-03-17 19:14:09 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=3005]]
+2025-03-17 19:14:09 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=3005]]
+2025-03-17 19:14:09 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=3005]]
+2025-03-17 19:14:09 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2098]]
+2025-03-17 19:14:09 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2098]]
+2025-03-17 19:14:09 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2098]]
+2025-03-17 19:14:09 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=3006]]
+2025-03-17 19:14:09 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=3006]]
+2025-03-17 19:14:09 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=3006]]
+2025-03-17 19:14:09 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2099]]
+2025-03-17 19:14:09 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2099]]
+2025-03-17 19:14:09 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2099]]
+2025-03-17 19:14:09 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=3007]]
+2025-03-17 19:14:09 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=3007]]
+2025-03-17 19:14:09 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=3007]]
+2025-03-17 19:14:10 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2100]]
+2025-03-17 19:14:10 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2100]]
+2025-03-17 19:14:10 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2100]]
+2025-03-17 19:14:10 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=3008]]
+2025-03-17 19:14:10 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=3008]]
+2025-03-17 19:14:10 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=3008]]
+2025-03-17 19:14:10 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:14:10 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:14:10 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=865]]
+2025-03-17 19:14:10 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=865]]
+2025-03-17 19:14:10 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=865]]
+2025-03-17 19:14:10 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2101]]
+2025-03-17 19:14:10 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2101]]
+2025-03-17 19:14:10 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2101]]
+2025-03-17 19:14:10 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=3009]]
+2025-03-17 19:14:10 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=3009]]
+2025-03-17 19:14:10 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=3009]]
+2025-03-17 19:14:10 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2102]]
+2025-03-17 19:14:10 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2102]]
+2025-03-17 19:14:10 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2102]]
+2025-03-17 19:14:10 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=3010]]
+2025-03-17 19:14:10 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=3010]]
+2025-03-17 19:14:10 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=3010]]
+2025-03-17 19:14:10 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2103]]
+2025-03-17 19:14:10 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2103]]
+2025-03-17 19:14:10 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2103]]
+2025-03-17 19:14:10 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=3011]]
+2025-03-17 19:14:10 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=3011]]
+2025-03-17 19:14:10 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=3011]]
+2025-03-17 19:14:11 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2104]]
+2025-03-17 19:14:11 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2104]]
+2025-03-17 19:14:11 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=2104]]
+2025-03-17 19:14:11 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=3012]]
+2025-03-17 19:14:11 - file.controller.services.device_manager - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=3012]]
+2025-03-17 19:14:11 - file - DEBUG - PacketIn [ICMP src=30.30.30.2 dst=30.30.30.3 seq=3012]]
+2025-03-17 19:14:11 - file - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:14:11 - file.controller.services.device_manager - DEBUG - PacketIn [arp_src_mac='52:aa:aa:aa:aa:a1' arp_src_ip='30.30.30.2' arp_dst_mac='00:00:00:00:00:00' arp_dst_ip='30.30.30.3']
+2025-03-17 19:25:49 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:02
+2025-03-17 19:25:49 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:02
+2025-03-17 19:57:49 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:02
+2025-03-17 19:57:49 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:02
+2025-03-17 20:08:37 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:fb
+2025-03-17 20:08:37 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:fb
+2025-03-17 20:08:38 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:fb
+2025-03-17 20:08:38 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:fb
+2025-03-17 20:29:42 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:02
+2025-03-17 20:29:42 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:02
+2025-03-17 20:52:27 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:02
+2025-03-17 20:52:27 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:02
+2025-03-17 21:08:37 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:fb
+2025-03-17 21:08:37 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a1 dst=33:33:00:00:00:fb
+2025-03-17 21:08:38 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:fb
+2025-03-17 21:08:38 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:fb
+2025-03-17 21:32:52 - file - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:02
+2025-03-17 21:32:52 - file.controller.services.device_manager - DEBUG - PacketIn Eth src=52:aa:aa:aa:aa:a2 dst=33:33:00:00:00:02

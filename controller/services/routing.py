@@ -141,12 +141,20 @@ class RouteManager:
         self.transient_flows: Set[PacketMatch] = set()  #
         self.reroute_observers = []
         self.acked_xids: SwitchToXids = defaultdict(set)
+        self.threads = []
 
     def async_replace_route(self, old_route: Route, new_route: Route):
-        spawn(self.replace_route, old_route=old_route, new_route=new_route)
+        t = spawn(
+            self.replace_route,
+            old_route=old_route,
+            new_route=new_route,
+            raise_error=True,
+        )
+        self.threads.append(t)
 
     def async_handle_packet_in(self, ev):
-        spawn(self.handle_packet_in, ev=ev)
+        t = spawn(self.handle_packet_in, ev=ev, raise_error=True)
+        self.threads.append(t)
 
     def ack_barrier(self, datapath: Any, xid: int):
         switch = self.device_manager.get_switch(dpid=datapath.id).name
