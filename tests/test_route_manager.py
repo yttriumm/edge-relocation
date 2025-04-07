@@ -29,7 +29,9 @@ def test_create_route(switch_in_scenario: SDNSwitch):
     )
     joinall(switch_in_scenario.routing.threads)
     expected_route = list(switch_in_scenario.routing.routes.values())[0]
-    assert ["r2", "r3"] == [link.src for link in expected_route.path]
+    assert [("r2", "r1"), ("r1", "r4")] == [
+        (link.src, link.dst) for link in expected_route.path
+    ]
 
 
 def test_get_route(routing_manager):
@@ -55,7 +57,7 @@ def test_replace_route(routing_manager):
     )
     old_route = Route(
         match=match,
-        links=[Link(delay=0, src="r1", dst="r4", src_port=9, dst_port=1)],
+        links={Link(delay=0, src="r1", dst="r4", src_port=9, dst_port=1)},
         source_switch="r1",
         source_switch_in_port=10,
         destination_switch="r4",
@@ -64,10 +66,10 @@ def test_replace_route(routing_manager):
     )
     new_route = Route(
         match=match,
-        links=[
+        links={
             Link(delay=0, src="r1", dst="r4", src_port=2, dst_port=1),
             Link(delay=0, src="r4", dst="r3", src_port=3, dst_port=4),
-        ],
+        },
         source_switch="r1",
         source_switch_in_port=10,
         destination_switch="r3",

@@ -13,8 +13,18 @@ links:
     src_port: 4 
     dst_port: 4
     delay: 1
+  - src: r2
+    dst: r1
+    src_port: 4 
+    dst_port: 4
+    delay: 1
   - src: r1
     dst: r4
+    src_port: 3 
+    dst_port: 3
+    delay: 2
+  - src: r4
+    dst: r1
     src_port: 3 
     dst_port: 3
     delay: 2
@@ -24,7 +34,17 @@ links:
     dst_port: 3
     delay: 3
   - src: r3
+    dst: r2
+    src_port: 3 
+    dst_port: 3
+    delay: 3
+  - src: r3
     dst: r4
+    src_port: 4 
+    dst_port: 4
+    delay: 4
+  - src: r4
+    dst: r3
     src_port: 4 
     dst_port: 4
     delay: 4

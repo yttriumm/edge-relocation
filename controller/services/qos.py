@@ -12,10 +12,10 @@ class TrafficClass:
 
 class QoS:
     traffic_classes = [
-        TrafficClass(max_delay_ms=1000000000000),
-        TrafficClass(max_delay_ms=1000000000000),
-        TrafficClass(max_delay_ms=1000000000000),
-        TrafficClass(max_delay_ms=1000000000000),
+        TrafficClass(max_delay_ms=200),
+        TrafficClass(max_delay_ms=100),
+        TrafficClass(max_delay_ms=50),
+        TrafficClass(max_delay_ms=10),
     ]
 
     @classmethod

@@ -1,8 +1,7 @@
 import dataclasses
 from typing import List, Optional
-from typing_extensions import Self
 import yaml
-import ryu.base.app_manager
+import ryu.base.app_manager  # noqa: F401
 from ryu.controller.controller import Datapath
 
 
@@ -21,26 +20,33 @@ class ConnectedSwitch(Switch):
         return ConnectedSwitch(name=switch.name, dpid=switch.dpid, datapath=datapath)
 
 
-@dataclasses.dataclass(frozen=True)
+@dataclasses.dataclass
 class Link:
     src: str
     dst: str
     src_port: int
     dst_port: int
-    delay: float = 1
+    delay: Optional[float] = None
 
     def __post_init__(self):
         if self.src == self.dst:
             raise ValueError("Source could not be the same as destination")
 
+    def __hash__(self):
+        return hash((self.src, self.dst, self.src_port, self.dst_port))
+
     def __eq__(self, other):
         if not isinstance(other, Link):
-            return ValueError("Link can be compared only with other Link")
-        fields = ["src", "dst", "src_port", "dst_port"]
-        for f in fields:
-            if not getattr(self, f) == getattr(other, f):
-                return False
-        return True
+            return NotImplemented
+        return (
+            self.src == other.src
+            and self.dst == other.dst
+            and self.src_port == other.src_port
+            and self.dst_port == other.dst_port
+        )
+
+    def __str__(self):
+        return f"{self.src}:{self.src_port}-{self.dst_port}{self.dst} d={self.delay}"
 
     @property
     def weight(self):
@@ -55,14 +61,13 @@ class Link:
             src_port=self.src_port,
         )
 
-    @classmethod
-    def reversed(cls, link: Self) -> Self:
-        return cls(
-            delay=link.delay,
-            src=link.dst,
-            src_port=link.dst_port,
-            dst=link.src,
-            dst_port=link.src_port,
+    def reversed(self) -> "Link":
+        return Link(
+            src=self.dst,
+            src_port=self.dst_port,
+            dst=self.src,
+            dst_port=self.src_port,
+            delay=None,  # delay data is lost
         )
 
 
@@ -106,10 +111,10 @@ class InfraConfig:
             if link.src == switch and link.src_port == port:
                 if is_source:
                     return link
-                return Link.reversed(link=link)
+                return link.reversed()
             if link.dst == switch and link.dst_port == port:
                 if is_source:
-                    return Link.reversed(link=link)
+                    return link.reversed()
                 return link
         # raise Exception(f"No corresponding link found for {switch=} {port=}")
 

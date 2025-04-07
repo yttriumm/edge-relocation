@@ -1,5 +1,5 @@
 import logging
-from typing import Any, Callable, Dict, List, Optional
+from typing import Any, Callable, Dict, List, Optional, Set, Tuple
 from controller.config import DOMAIN_CONFIG_PATH, INFRA_CONFIG_PATH
 from controller.config.domain_config import DomainConfig
 from controller.config.infra_config import ConnectedSwitch, InfraConfig, Link
@@ -26,8 +26,10 @@ class DeviceManager:
         self.attachment_points: Dict[str, AttachmentPoint] = {}
         self.datapaths: Dict[str, Datapath] = {}  # {switch name: Datapath}
         self.connected_switches: List[ConnectedSwitch] = []
-        self.links: List[Link] = self.config.links
-        self.link_observers: List[Callable[[List[Link]], Any]] = []
+        self.links: Set[Link] = set(
+            self.config.links + [lnk.reversed() for lnk in self.config.links]
+        )
+        self.link_observers: List[Callable[[Link], Any]] = []
         self.mobility_observers: List[
             Callable[[AttachmentPoint, AttachmentPoint], Any]
         ] = []
@@ -45,8 +47,13 @@ class DeviceManager:
             self.add_or_replace_attachment_point(ap=ap)
 
     def get_datapath(
-        self, switch_name: Optional[str] = None, client_ip: Optional[str] = None
+        self,
+        switch_name: Optional[str] = None,
+        client_ip: Optional[str] = None,
+        dpid: Optional[int] = None,
     ) -> Datapath:
+        if dpid:
+            return next(dp for dp in self.datapaths.values() if dp.id == dpid)
         if switch_name:
             return self.datapaths[switch_name]
         if client_ip:
@@ -57,9 +64,10 @@ class DeviceManager:
         raise ValueError("No parameters provided for DeviceManager.get_datapath")
 
     def handle_host_mobility(self, old_ap: AttachmentPoint, new_ap: AttachmentPoint):
-        logger.info(
-            f"Host {old_ap} moved from {old_ap.switch_name}{old_ap.switch_port} to {new_ap.switch_name}:{new_ap.switch_port}"
-        )
+        msg = f"Host {old_ap} moved from {old_ap.switch_name}{old_ap.switch_port} to {new_ap.switch_name}:{new_ap.switch_port}"
+        logger.info(msg)
+        file_logger.info(msg)
+
         self.attachment_points[new_ap.client_mac] = new_ap
         self.send_default_l2_rules(ap=new_ap)
         self.remove_default_l2_rules(ap=old_ap)
@@ -72,6 +80,9 @@ class DeviceManager:
             self.remove_default_l3_rules(ap=old_ap, ip_address=ip)
 
         self.notify_mobility_observers(old_ap=old_ap, new_ap=new_ap)
+
+    def get_all_switches(self):
+        return self.connected_switches
 
     def add_or_replace_attachment_point(self, ap: AttachmentPoint):
         old_ap = self.attachment_points.get(ap.client_mac)
@@ -97,7 +108,7 @@ class DeviceManager:
         self.ports[switch.name] = []
         self.datapaths[switch.name] = datapath
 
-    def add_link_observer(self, fn: Callable[[List[Link]], Any]):
+    def add_link_observer(self, fn: Callable[[Link], Any]):
         self.link_observers.append(fn)
 
     def add_mobility_observer(
@@ -105,7 +116,7 @@ class DeviceManager:
     ):
         self.mobility_observers.append(fn)
 
-    def remove_link_observer(self, fn: Callable[[List[Link]], None]):
+    def remove_link_observer(self, fn: Callable[[Link], Any]):
         try:
             self.link_observers.pop(self.link_observers.index(fn))
         except IndexError:
@@ -117,18 +128,14 @@ class DeviceManager:
         for observer in self.mobility_observers:
             observer(old_ap, new_ap)
 
-    def notify_link_observers(self):
+    def notify_link_observers(self, link: Link):
         for observer in self.link_observers:
-            observer(self.links)
+            observer(link)
 
     def update_link(self, link: Link):
-        for i, _link in enumerate(self.links):
-            if _link == link:
-                self.links[i] = link
-                break
-        else:
-            self.links.append(link)
-        self.notify_link_observers()
+        self.links.discard(link)
+        self.links.add(link)
+        self.notify_link_observers(link=link)
 
     def add_port(self, port: Port):
         self.ports[port.switch].append(port)
@@ -156,8 +163,20 @@ class DeviceManager:
         except IndexError:
             raise Exception(f"Switch {switch_name=} not found")
 
-    def get_ports(self, dpid: int) -> List[Port]:
-        switch = self.get_switch(dpid=dpid)
+    def get_datapath_port_pairs(self) -> List[Tuple[Datapath, Port]]:
+        pairs = []
+        for switch in self.connected_switches:
+            datapath = self.datapaths[switch.name]
+            ports = self.ports[switch.name]
+            pairs += [(datapath, port) for port in ports]
+        return pairs
+
+    def get_ports(
+        self, dpid: Optional[int] = None, switch_name: Optional[str] = None
+    ) -> List[Port]:
+        if not any([dpid, switch_name]):
+            raise ValueError("dpid or switch_name is required")
+        switch = self.get_switch(dpid=dpid, switch_name=switch_name)
         try:
             ports = self.ports[switch.name]
         except IndexError:

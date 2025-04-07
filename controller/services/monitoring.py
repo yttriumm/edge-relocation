@@ -1,14 +1,21 @@
 import functools
+import json
 import logging
+import random
 import time
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, Optional, Tuple
+import eventlet
 from ryu.lib.packet import ethernet, packet
 from controller.config import INFRA_CONFIG_PATH
 from controller.config.infra_config import InfraConfig, Link
 from ryu.lib.hub import spawn
-from controller.models.models import Packet, Port
+from controller.models.models import Packet
 from controller.utils.helpers import send_packet
 from controller.services.device_manager import DeviceManager
+
+
+PROBE_INTERVAL = 3.0
+PROBE_JITTER = 0.2
 
 
 def timestamp_ms():
@@ -41,51 +48,68 @@ class Monitoring:
         return False
 
     def handle_packet_in(self, ev):
+        ts = timestamp_ms()
         pkt = Packet.from_event(ev)
         in_port = ev.msg.match["in_port"]
         dpid = ev.msg.datapath.id
+        dst_switch = self.device_manager.get_switch(dpid=dpid)
+        # self.logger.info(pkt)
         if not self.is_monitoring_packet(pkt=pkt):
             return
-        ts = timestamp_ms()
-        destination_switch = self.device_manager.get_switch(dpid=dpid)
-        link = self.infra_config.get_link(
-            switch=destination_switch.name, port=in_port, is_source=False
+        payload: str = pkt._pkt.protocols[1].decode()  # type: ignore // expecting a json
+        payload_json = json.loads(payload.rstrip("\x00"))
+        src_dp = payload_json["src_dp"]
+        src_port = payload_json["src_port"]
+        src_switch = self.device_manager.get_switch(dpid=src_dp)
+        try:
+            send_time = self.send_times[(int(src_dp), src_port)]
+        except KeyError:
+            raise RuntimeError(
+                f"Got probe packet from {src_switch}:{src_port}, but none was sent!"
+            )
+        link = Link(
+            src=src_switch.name,
+            dst=dst_switch.name,
+            src_port=src_port,
+            dst_port=in_port,
+            delay=ts - send_time,
         )
-        if not link:
-            return
-        source_switch = self.device_manager.get_switch(switch_name=link.src)
-        send_time = self.send_times[(int(source_switch.dpid), link.src_port)]
-        delay = ts - send_time
-        self.handle_new_delay_data(link=link, delay=delay)
+        # self.logger.debug(f"Updating link {link}")
+        self.handle_new_delay_data(link=link)
 
     def start(self):
         spawn(self.main_loop)
 
     def main_loop(self):
-        for i in range(5):
-            self.send_probe_packets()
-            self.monitor_routes()
-            time.sleep(1)
-        pass
+        while True:
+            dp_port_pairs = self.device_manager.get_datapath_port_pairs()
+            if not dp_port_pairs:
+                eventlet.sleep()
+                continue
+            datapath, port = random.choice(dp_port_pairs)
+            self.send_times[(int(port.datapath), port.number)] = timestamp_ms()
+            send_packet(
+                datapath=datapath,
+                port=port.number,
+                pkt=self._assemble_probe_packet(
+                    src_dp=datapath.id, src_port=port.number
+                ),
+            )
+            avg_interval = PROBE_INTERVAL / len(dp_port_pairs)
+            sleep_time = random.uniform(
+                avg_interval - (PROBE_JITTER / (2 * len(dp_port_pairs))),
+                avg_interval + (PROBE_JITTER / (2 * len(dp_port_pairs))),
+            )
+            eventlet.sleep(sleep_time)  # type: ignore
 
-    def monitor_routes(self):
-        pass
-
-    def handle_new_delay_data(self, link: Link, delay: float):
-        new_link = link.copy(new_delay=delay)
-        self.device_manager.update_link(link=new_link)
-
-    def send_probe_packets(self):
-        probe_packet: packet.Packet = self._assemble_probe_packet()
-        for switch, datapath in self.device_manager.datapaths.items():
-            ports: List[Port] = self.device_manager.ports[switch]
-            for port in ports:
-                self.send_times[(datapath.id, port.number)] = timestamp_ms()  # type: ignore
-                send_packet(datapath=datapath, port=port.number, pkt=probe_packet)
+    def handle_new_delay_data(self, link: Link):
+        self.device_manager.update_link(link=link)
 
     @functools.lru_cache
-    def _assemble_probe_packet(self):
-        e = ethernet.ethernet(src="ba:ba:ba:ba:ba:ba")
+    def _assemble_probe_packet(self, src_dp: int, src_port: int):
+        e = ethernet.ethernet(src="ba:ba:ba:ba:ba:ba", ethertype=0x88B6)
         p = packet.Packet()
         p.add_protocol(e)
+        payload = json.dumps({"src_dp": src_dp, "src_port": src_port})
+        p.add_protocol(payload.encode())
         return p

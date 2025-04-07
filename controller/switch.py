@@ -14,7 +14,7 @@ from controller.config import DOMAIN_CONFIG_PATH, INFRA_CONFIG_PATH
 from controller.config.infra_config import InfraConfig
 from controller.services.device_manager import DeviceManager
 from controller.services.routing import RouteManager
-from controller.utils.helpers import rm_all_flows
+from controller.utils.helpers import error_code_to_str, error_type_to_str, rm_all_flows
 from controller.services.ipam import IPAM
 from controller.services import parser, ofp
 from controller.api.controller_api import ControllerApi
@@ -61,6 +61,7 @@ class SDNSwitch(RyuApp):
 
     def start(self):
         super().start()
+        self.monitoring.start()
         ControllerApi.setup(controller=self)
         ControllerApi.start()
 
@@ -113,9 +114,49 @@ class SDNSwitch(RyuApp):
         self.logger.debug("OFPBarrierReply received")
         self.routing.ack_barrier(datapath=ev.msg.datapath, xid=ev.msg.xid)  # type: ignore
 
+    @set_ev_cls(ofp_event.EventOFPFlowStatsReply, MAIN_DISPATCHER)  # type: ignore
+    def _flow_stats_reply_handler(self, ev):
+        dpid = ev.msg.datapath.id
+        xid = ev.msg.xid
+        self.routing.ack_flow_dump(dpid=dpid, xid=xid, response=ev.msg.body)
+
     def request_port_stats(self, datapath):
         req = parser.OFPPortDescStatsRequest(datapath, 0)
         datapath.send_msg(req)
+
+    @set_ev_cls(ofp_event.EventOFPErrorMsg, MAIN_DISPATCHER)  # type: ignore
+    def error_handler(self, ev):
+        msg = ev.msg
+        datapath = msg.datapath
+        ofp = datapath.ofproto
+
+        print(f"\n[!] ERROR RECEIVED from {datapath.id}")
+        print(f"Type: {msg.type} ({error_type_to_str(msg.type)})")
+        print(f"Code: {msg.code} ({error_code_to_str(msg.type, msg.code)})")
+
+    @set_ev_cls(ofp_event.EventOFPGetConfigReply, MAIN_DISPATCHER)  # type: ignore
+    def config_reply_handler(self, ev):
+        msg = ev.msg
+        print(f"[CONFIG] Flags={msg.flags}, Miss Send Len={msg.miss_send_len}")
+
+    @set_ev_cls(ofp_event.EventOFPPortDescStatsReply, MAIN_DISPATCHER)  # type: ignore
+    def port_desc_handler(self, ev):
+        print("[PORT DESC] Ports:")
+        for port in ev.msg.body:
+            print(
+                f"  - Port No: {port.port_no}, Name: {port.name}, State: {port.state}"
+            )
+
+    @set_ev_cls(ofp_event.EventOFPDescStatsReply, MAIN_DISPATCHER)  # type: ignore
+    def desc_reply_handler(self, ev):
+        desc = ev.msg
+        self.device_manager.g
+        print("[DESC STATS]")
+        print(f"  Manufacturer: {desc.mfr_desc}")
+        print(f"  Hardware: {desc.hw_desc}")
+        print(f"  Software: {desc.sw_desc}")
+        print(f"  Serial: {desc.serial_num}")
+        print(f"  Datapath: {desc.dp_desc}")
 
     def drop(self, msg):
         return OFPPacketOut(

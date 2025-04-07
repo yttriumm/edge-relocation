@@ -1,4 +1,4 @@
-from unittest.mock import MagicMock, Mock, create_autospec
+from unittest.mock import MagicMock, Mock
 from ryu.ofproto import ofproto_v1_3
 from ryu.ofproto.ofproto_v1_3_parser import (
     OFPSwitchFeatures,
@@ -16,12 +16,9 @@ from controller.services.ipam import IPAM
 from controller.services.monitoring import Monitoring
 from controller.services.routing import RouteManager
 from controller.switch import SDNSwitch
-from unittest.mock import create_autospec
 from ryu.ofproto.ofproto_v1_3 import OFPR_NO_MATCH, OFP_NO_BUFFER
-from ryu.ofproto.ofproto_v1_3_parser import OFPPacketIn, OFPMatch
+from ryu.ofproto.ofproto_v1_3_parser import OFPPacketIn
 from ryu.ofproto import ofproto_v1_3_parser
-from ryu.controller import ofp_event
-from ryu.controller.controller import Datapath
 from ryu.lib.packet import packet, ethernet, ipv4, udp, dhcp, icmp
 
 logger = logging.getLogger(__name__)
@@ -103,7 +100,7 @@ def create_mock_ping(
             type_=icmp.ICMP_ECHO_REQUEST,
             code=0,
             csum=0,  # Auto-calculated during serialization
-            data=icmp.echo(id_=0x1234, seq=1, data=b"halo"),
+            data=icmp.echo(id_=0x1234, seq=1, data=b"halo"),  # type: ignore
         )
     )
 

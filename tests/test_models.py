@@ -13,7 +13,7 @@ from controller.switch import SDNSwitch
 def test_route_switches():
     old_route = Route(
         match=PacketMatch(),
-        links=[Link(delay=0, src="r1", dst="r4", src_port=9, dst_port=1)],
+        links={Link(delay=0, src="r1", dst="r4", src_port=9, dst_port=1)},
         source_switch="r1",
         source_switch_in_port=10,
         destination_switch="r4",

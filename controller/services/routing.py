@@ -1,8 +1,10 @@
 from collections import defaultdict
+from dataclasses import asdict
+import json
 import logging
-from queue import PriorityQueue, Queue
+from queue import Queue
 from time import time
-from typing import Any, Dict, List, Optional, Set
+from typing import Any, Dict, List, Optional, Set, Tuple
 
 import eventlet
 from controller.config.infra_config import InfraConfig, Link
@@ -18,6 +20,7 @@ from controller.models.models import (
     generate_flow_rules,
     order_flow_operations,
 )
+from controller.models.network_graph import NetworkGraph
 from controller.utils.helpers import (
     flow_mod_with_match,
 )
@@ -26,98 +29,12 @@ from ryu.ofproto.ofproto_v1_3_parser import (
     OFPActionOutput,
     OFPBarrierRequest,
 )
-from ryu.ofproto.ofproto_v1_3 import OFP_NO_BUFFER, OFPP_CONTROLLER
+from ryu.ofproto.ofproto_v1_3 import OFP_NO_BUFFER, OFPP_CONTROLLER, OFPAT_OUTPUT
 from controller.services.device_manager import DeviceManager
 from controller.services.ipam import IPAM
-from ryu.controller.handler import set_ev_cls, MAIN_DISPATCHER  # noqa: F401
 from ryu.lib.hub import spawn
 
 logger = logging.getLogger(__name__)
-
-
-class NetworkGraph:
-    def __init__(self, links: List[Link]):
-        self.links = links
-
-    def get_nodes(self):
-        source_nodes: List[str] = [link.src for link in self.links]
-        destination_nodes: List[str] = [link.dst for link in self.links]
-        return list(set(source_nodes + destination_nodes))
-
-    def _path_from_visited_nodes(
-        self, visited_nodes: Dict, source: str, destination: str
-    ) -> List[Link]:
-        path = []
-        node = destination
-        while node != source:
-            previous_node = visited_nodes[node]
-            link = [
-                link
-                for link in self.links
-                if link.src == previous_node
-                and link.dst == node
-                or link.dst == previous_node
-                and link.src == node
-            ][0]
-            path.append(link)
-            node = previous_node
-        return list(reversed(path))
-
-    def get_link(self, src: str, dst: str) -> Optional[Link]:
-        link = next(
-            (link for link in self.links if link.src == src and link.dst == link.dst),
-            None,
-        )
-        # if not link:
-        #     link = next(
-        #         (link for link in self.links if link.src == dst and link.dst == src),
-        #         None,
-        #     )
-        return link
-
-    def all_possible_links(self):
-        all_links = []
-        for link in self.links:
-            all_links.append(link)
-            opposite_link = self.get_link(src=link.dst, dst=link.src)
-            if not opposite_link:
-                opposite_link = Link.reversed(link)
-            all_links.append(opposite_link)
-        return all_links
-
-    def shortest_path(self, source: str, destination: str):
-        nodes = self.get_nodes()
-        assert source in nodes and destination in nodes, "Node outside of network"
-        distances = {node: 1e7 for node in nodes}
-        edges: dict[str, dict[str, Optional[Link]]] = {
-            n1: {n2: None for n2 in nodes} for n1 in nodes
-        }
-        for link in self.all_possible_links():
-            edges[link.src][link.dst] = link
-
-        previous_nodes = {}
-        distances[source] = 0
-        visited = []
-        queue = PriorityQueue()
-        queue.put((0, source))
-
-        while not queue.empty():
-            (distance, current_node) = queue.get()
-            visited.append(current_node)
-            for neighbor in nodes:
-                if edges[current_node][neighbor] is not None:
-                    distance = edges[current_node][neighbor].weight  # type: ignore
-                    if neighbor not in visited:
-                        old_cost = distances[neighbor]
-                        new_cost = distances[current_node] + distance
-                        if new_cost < old_cost:
-                            queue.put((new_cost, neighbor))
-                            distances[neighbor] = new_cost
-                            previous_nodes[neighbor] = current_node
-        path = self._path_from_visited_nodes(
-            visited_nodes=previous_nodes, source=source, destination=destination
-        )
-        return path
 
 
 SwitchToXids = Dict[str, Set[int]]
@@ -141,9 +58,11 @@ class RouteManager:
         self.transient_flows: Set[PacketMatch] = set()  #
         self.reroute_observers = []
         self.acked_xids: SwitchToXids = defaultdict(set)
+        self.flow_responses: Dict[Tuple[int, int], Any] = {}
         self.threads = []
 
     def async_replace_route(self, old_route: Route, new_route: Route):
+        self.mark_flow_transient(old_route.match)
         t = spawn(
             self.replace_route,
             old_route=old_route,
@@ -160,6 +79,9 @@ class RouteManager:
         switch = self.device_manager.get_switch(dpid=datapath.id).name
         logger.debug(f"Barrier ACK: {switch}, xid={xid}")
         self.acked_xids[switch].add(xid)
+
+    def ack_flow_dump(self, dpid: int, xid: int, response: Any):
+        self.flow_responses[(dpid, xid)] = response
 
     def send_and_await_barriers(self, switches: List[str]):
         logger.debug("Sending barriers...")
@@ -178,6 +100,33 @@ class RouteManager:
                 [xid in self.acked_xids[switch] for xid in unacked_xids[switch]]
             ):
                 eventlet.sleep()
+
+    def get_flow_tables(self):
+        switches = self.device_manager.get_all_switches()
+        awaitable_keys = []
+        for switch in switches:
+            dp = self.device_manager.get_datapath(dpid=int(switch.dpid))
+            # Create a flow stats request to dump all flows.
+            req = dp.ofproto_parser.OFPFlowStatsRequest(
+                dp,
+                match=dp.ofproto_parser.OFPMatch(),
+                table_id=dp.ofproto.OFPTT_ALL,
+                out_port=dp.ofproto.OFPP_ANY,
+            )
+            # Tag the request with a unique xid.
+            xid = dp.set_xid(req)
+            # Store an entry with key (dp.id, xid) initially set to None.
+            self.flow_responses[(dp.id, xid)] = None  # type: ignore
+            awaitable_keys.append((dp.id, xid))  # type: ignore
+            # Send the request.
+            dp.send_msg(req)
+        while not all(self.flow_responses[key] for key in awaitable_keys):
+            eventlet.sleep()
+        responses = {key: self.flow_responses[key] for key in awaitable_keys}
+        parsed_responses = self.parse_flow_responses(responses).values()
+        result_flat = [rule for rules in parsed_responses for rule in rules]
+        result_sorted = sorted(result_flat, key=lambda rule: rule.switch)
+        return result_sorted
 
     def mark_flow_transient(self, match: PacketMatch):
         logger.debug(f"Marking flow {match} transient")
@@ -214,6 +163,11 @@ class RouteManager:
             raise Exception(
                 "No source or destination IP. Cannot find attachment points."
             )
+        if match in self.routes:
+            logger.info(
+                "Ignoring existing route PacketIn. You might want to take a look on that."
+            )
+            return
         route = self.create_and_apply_route(match=pkt.match, ctx=msg)
         if route.path:
             self.send_packet_out(
@@ -230,6 +184,7 @@ class RouteManager:
         )
         self.mark_flow_transient(match=match)
         self.apply_route(route=route, ctx=ctx)
+        eventlet.sleep(0.5)  # type: ignore
         self.unmark_flow_transient(match=match)
         logger.debug(f"Finished sending out routes {time()}")
         return route
@@ -251,13 +206,17 @@ class RouteManager:
     def save_route(self, route: Route):
         self.routes[route.match] = route
 
-    def handle_link_update(self, links: List[Link]):
+    def handle_link_update(self, link: Link):
+        # logger.debug(f"Updating link: {link}")
         for route in self.routes.values():
-            if any([link in links for link in route.path]):
-                route.update_link_data(links=links)
-            if not route.matches_qos:
-                logger.info(f"Rerouting {route}...")
-                new_route = self.get_route(match=route.match)
+            is_link_updated = route.try_update_link(link=link)
+            if (
+                is_link_updated
+                and not route.matches_qos
+                and not self.is_flow_transient(route.match)
+            ):
+                logger.info(f"Rerouting {route.path}...")
+                new_route = self.get_route(match=route.match, set_id=route.id)
                 new_route.id = route.id
                 self.async_replace_route(old_route=route, new_route=new_route)
 
@@ -272,16 +231,16 @@ class RouteManager:
             try:
                 if not route.match.ip_src == ip and not route.match.ip_dst == ip:
                     continue
-                new_route = self.get_route(match=route.match)
-                new_route.id = route.id
+                new_route = self.get_route(match=route.match, set_id=route.id)
                 self.async_replace_route(old_route=route, new_route=new_route)
             except Exception as e:
                 logger.error(f"Failed to migrate route {route=}: {str(e)}")
 
     def replace_route(self, new_route: Route, old_route: Route):
-        logger.info(f"Replacing route {old_route.path} to {new_route.path}")
-
-        self.mark_flow_transient(new_route.match)
+        logger.info(
+            f"Replacing route {old_route.path} ------> {new_route.path} {asdict(old_route.match)}"
+        )
+        self.mark_flow_transient(match=old_route.match)
         for old_r, new_r in (
             (old_route, new_route),
             (old_route.reversed(), new_route.reversed()),
@@ -305,28 +264,35 @@ class RouteManager:
             process_rules(FlowModOperation.MODIFY, new_route.switches_ordered)
             # For DELETE, use the old route's switch order.
             process_rules(FlowModOperation.DELETE, old_route.switches_ordered)
-        self.unmark_flow_transient(match=new_route.match)
         self.save_route(route=new_route)
+        file_logger.info(json.dumps([asdict(rule) for rule in self.get_flow_tables()]))
+        eventlet.sleep(0.2)  # type: ignore
+        self.unmark_flow_transient(match=old_route.match)
         logger.debug("Finished replacing route")
 
-    def get_route(self, match: PacketMatch) -> Route:
+    def get_route(self, match: PacketMatch, set_id: Optional[int] = None) -> Route:
         if not match.ip_src or not match.ip_dst:
             raise Exception(f"No source or destination IP. Got: {match}")
         src_ap = self.device_manager.get_attachment_point(ip_address=match.ip_src)
         dst_ap = self.device_manager.get_attachment_point(ip_address=match.ip_dst)
-        network = self.device_manager.links
+        network = list(
+            [lnk for lnk in self.device_manager.links if lnk.delay is not None]
+        )
+        logger.debug(f"Links: {network}")
+        logger.debug(f"Got {match} with requirements: {match.traffic_class}")
         graph = NetworkGraph(network)
-        path = graph.shortest_path(
+        path, path_backwards = graph.shortest_path(
             source=src_ap.switch_name, destination=dst_ap.switch_name
         )
-        logger.debug(f"Got {match} with requirements: {match.traffic_class}")
         route = Route(
-            links=path,
+            links=set(path) | set(path_backwards),
             match=match,
             source_switch=src_ap.switch_name,
             source_switch_in_port=src_ap.switch_port,
             destination_switch=dst_ap.switch_name,
             destination_switch_out_port=dst_ap.switch_port,
+            delay_aware_links=set(path) | set(path_backwards),
+            **({"id": set_id} if set_id else {}),
         )
         if route.rtt > match.traffic_class.max_delay_ms:
             raise Exception(
@@ -376,6 +342,9 @@ class RouteManager:
     ):
         dp = self.device_manager.get_datapath(switch_name=rule.switch)
         logger.debug(f"sending rule {rule} {operation} {buffer_id}")
+        file_logger.info(
+            json.dumps({"rule": asdict(rule), "operation": operation.value})
+        )
         flow_mod_with_match(
             datapath=dp,
             cookie=rule.cookie,
@@ -386,6 +355,54 @@ class RouteManager:
             send=True,
             operation=operation,
         )
+
+    def parse_flow_responses(
+        self, responses: Dict[Tuple[int, int], Any]
+    ) -> Dict[str, List[FlowRule]]:
+        # result will be a dictionary mapping switch name to a list of FlowRule objects.
+        result: Dict[str, List[FlowRule]] = {}
+
+        # Iterate over the responses (keys are (dp_id, xid))
+        for (dp_id, _), flow_stats in responses.items():
+            # Get the switch name from your device manager. (Assume get_switch_by_dpid exists.)
+            switch_obj = self.device_manager.get_switch(dpid=dp_id)
+            switch_name = switch_obj.name  # Or however you obtain the switch's name.
+            # Process each flow stat in the response.
+            for stat in flow_stats:
+                # Only process flows whose instructions include an output action.
+                out_port = None
+                for instr in stat.instructions:
+                    # Check if this instruction is an OFPInstructionActions.
+                    # (The actual type depends on your OFP parser; adjust accordingly.)
+                    if instr.__class__.__name__ == "OFPInstructionActions":
+                        for action in instr.actions:
+                            # Check if the action is an output action. In OpenFlow 1.3, type 0 indicates output.
+                            if action.type == OFPAT_OUTPUT:
+                                out_port = action.port
+                                break
+                        if out_port is not None:
+                            break
+
+                # Skip flows that do not include an output action.
+                if out_port is None:
+                    continue
+
+                # Get the in_port from the match; we assume it is stored in the match
+                # (In many cases, you can use stat.match.get("in_port"))
+                in_port = stat.match.get("in_port", 0)
+
+                # Convert the OFPMatch to our PacketMatch (using a helper method).
+                pkt_match = PacketMatch.from_ofp_match(stat.match)
+
+                rule = FlowRule(
+                    switch=switch_name,
+                    cookie=stat.cookie,
+                    match=pkt_match,
+                    in_port=in_port,
+                    out_port=out_port,
+                )
+                result.setdefault(switch_name, []).append(rule)
+        return result
 
     if __name__ == "__main__":
         config = InfraConfig.from_file(INFRA_CONFIG_PATH)

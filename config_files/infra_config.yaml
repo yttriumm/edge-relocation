@@ -1,26 +1,32 @@
                                          
-#    vid50                                 
-#    │                                     
-#    │                                     
-#    :2                                    
-#   ┌───┐                     ┌───┐        
-#   │ r1│:4─────────────────:4│ r2│        
-#   └───┘                     └───┘        
-#    :3                         :3         
-#    │                           │         
-#    │                           │         
-#    │                           │         
-#    │                           │         
-#    │                           │         
-#    :3                         :3         
-#   ┌───┐                     ┌───┐        
-#   │ r4│:4─────────────────:4│ r3│        
-#   └───┘                     └───┘        
-#    :2                         :2         
-#    │                          │          
-#    │                          │          
-#   vid40                      vid30       
-#  h2default                  h1default    
+                                       
+    # vid 10                vid  20      
+    #      │                      │      
+    #      │                      │      
+    #      │                      │      
+    #      │                      │      
+    #      │1                     │2     
+    #   ┌──┴───┐               ┌──┴───┐  
+    #   │      │               │      │  
+    #   │  r1  ┼───────────────┤  r2  │  
+    #   │      │ 2           1 │      │  
+    #   └──┬───┘               └──┬───┘  
+    #      │ 3                    │ 3    
+    #      │                      │      
+    #      │                      │      
+    #      │ 1                    │      
+    #   ┌──┴───┐                  │      
+    #   │      │                  │      
+    #   │  r3  ┼──────────────────┘      
+    #   │      │ 2                       
+    #   └──┬───┘                         
+    #     3│                             
+    #      │                             
+    #      │                             
+    #      │                             
+    # vid 30                             
+                                       
+
                                          
 switches:
   - name: r1
@@ -29,40 +35,21 @@ switches:
     dpid: "2"
   - name: r3
     dpid: "3"
-  - name: r4
-    dpid: "4"
 links:
   - src: r1
     dst: r2
-    src_port: 4 
-    dst_port: 4
-  - src: r1
-    dst: r4
-    src_port: 3 
-    dst_port: 3
+    src_port: 2
+    dst_port: 1
   - src: r2
     dst: r3
     src_port: 3 
-    dst_port: 3
-  - src: r3
-    dst: r4
-    src_port: 4 
-    dst_port: 4
-    
+    dst_port: 2
+  - src: r1
+    dst: r3
+    src_port: 3 
+    dst_port: 1
 
 controller:
   name: c1
   ip: 192.168.0.100
   port: 6633
-
-hosts:
-  - name: h1
-    switch: r4
-    switch_port: 2
-    mac: 00:00:00:00:00:01
-    network: green
-  - name: h2
-    switch: r3
-    switch_port: 2
-    mac: 00:00:00:00:00:02
-    network: green

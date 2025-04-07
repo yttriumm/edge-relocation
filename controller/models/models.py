@@ -2,8 +2,9 @@ from collections import namedtuple
 from copy import deepcopy
 import dataclasses
 import enum
+import logging
 from ryu.lib.packet import arp, dhcp, ethernet, icmp, ipv4, packet, tcp, udp
-from typing import Any, Dict, Iterator, List, Optional
+from typing import Any, Dict, Iterator, List, Optional, Set
 
 from controller.config.infra_config import Link
 from controller.services.qos import QoS
@@ -13,6 +14,8 @@ from ryu.lib import addrconv
 from ryu.lib.ip import ipv4_to_int
 from ryu.ofproto.ofproto_v1_3_parser import OFPMatch
 from ryu.lib.packet.ether_types import ETH_TYPE_IP
+
+logger = logging.getLogger(__name__)
 
 
 @dataclasses.dataclass(frozen=True)
@@ -78,6 +81,23 @@ class PacketMatch:
             tcp_src=self.tcp_dst,
             udp_src=self.udp_dst,
             udp_dst=self.udp_src,
+        )
+
+    @classmethod
+    def from_ofp_match(cls, ofp_match) -> "PacketMatch":
+        # Assuming 'ofp_match' is a dict-like object (e.g., ofp_match.oxm_fields)
+        fields = getattr(ofp_match, "oxm_fields", ofp_match)
+        return cls(
+            ip_src=fields.get("ipv4_src"),
+            ip_dst=fields.get("ipv4_dst"),
+            ip_proto=fields.get("ip_proto"),
+            mac_src=fields.get("dl_src"),
+            mac_dst=fields.get("dl_dst"),
+            tcp_src=fields.get("tcp_src"),
+            tcp_dst=fields.get("tcp_dst"),
+            udp_src=fields.get("udp_src"),
+            udp_dst=fields.get("udp_dst"),
+            _ether_type=fields.get("eth_type"),
         )
 
     @property
@@ -221,34 +241,72 @@ cookie_counter = flow_cookie()
 
 @dataclasses.dataclass
 class Route:
-    links: List[Link] = dataclasses.field(repr=False)
+    links: Set[Link] = dataclasses.field(repr=False)
     match: PacketMatch
     source_switch: str
     source_switch_in_port: int
     destination_switch: str
     destination_switch_out_port: int
-    all_links: List[Link] = dataclasses.field(init=False, default_factory=list)
     id: int = dataclasses.field(default_factory=lambda: next(cookie_counter))
+    delay_aware_links: Set[Link] = dataclasses.field(default_factory=set)
+
+    def __str__(self):
+        return f"{self.match.ip_src}->{self.match.ip_dst} {[str(lnk) for lnk in self.path]} delay_aware_links: {[str(lnk) for lnk in self.delay_aware_links]} delay_aware: {self.is_delay_aware} rtt: {self.rtt} matches_qos: {self.matches_qos} "
+
+    def __post_init__(self):
+        pass
 
     @property
     def path(self) -> List[Link]:
-        current_source = self.source_switch
-        new_links = []
-        for link in self.links:
-            is_correct_source = link.src == current_source
-            if is_correct_source:
-                new_link = link
-            else:
-                new_link = Link.reversed(link)
-            new_links.append(new_link)
-            current_source = new_link.dst
-        return new_links
+        result = []
+        if len(self.links) == 0:
+            return result
+        unvisited_links = set(self.links)
+        try:
+            current_link = next(
+                (lnk for lnk in unvisited_links if lnk.src == self.source_switch)
+            )
+            last_link = next(
+                (lnk for lnk in unvisited_links if lnk.dst == self.destination_switch)
+            )
+        except StopIteration:
+            raise RuntimeError("Could not find matching link in path")
+        result.append(current_link)
+        if len(self.links) == 2:
+            return result
+
+        for _ in range(int(len(self.links) / 2 - 1)):
+            try:
+                next_link = next(
+                    (
+                        lnk
+                        for lnk in unvisited_links
+                        if lnk.src == current_link.dst and lnk.dst != current_link.src
+                    )
+                )
+            except StopIteration:
+                raise RuntimeError("Could not find matching link in path")
+            unvisited_links.discard(next_link)
+            result.append(next_link)
+            current_link = next_link
+            if next_link == last_link:
+                break
+        else:
+            raise ValueError("Could not assembly path")
+        return result
+
+    @property
+    def is_delay_aware(self) -> bool:
+        return (
+            self.links | set([link.reversed() for link in self.links])
+            == self.delay_aware_links
+        ) and all((lnk.delay is not None for lnk in self.delay_aware_links))
 
     @property
     def rtt(self):
-        if not len(self.all_links):
-            return sum([link.delay for link in self.links], start=0) * 2
-        return sum([link.delay for link in self.all_links], start=0)
+        if not self.is_delay_aware:
+            return 0
+        return sum([link.delay or 0 for link in self.delay_aware_links], start=0)
 
     @property
     def matches_qos(self) -> bool:
@@ -264,31 +322,34 @@ class Route:
                 result.append(link.dst)
         return result
 
-    def update_link_data(self, links: List[Link]):
-        all_links = []
-        for link in self.links:
-            updated_link = next((lnk for lnk in links if lnk == link), None)
-            updated_link_reversed = next(
-                (lnk for lnk in links if lnk == Link.reversed(link)), None
-            )
-            if not updated_link_reversed:
-                raise Exception("update_link_data did not include link {link}")
-            if not updated_link:
-                raise Exception("update_link_data did not include link {link}")
-            all_links.extend([updated_link, updated_link_reversed])
-        self.all_links = all_links
+    def try_update_link(self, link: Link):
+        if link in self.links or link.reversed() in self.links:
+            self.delay_aware_links.discard(link)
+            self.delay_aware_links.add(link)
+            return True
+        return False
 
     def reversed(self):
-        links = [lnk for lnk in self.links]
-        links.reverse()
         return Route(
-            links=links,
+            links=self.links,
             match=self.match.reversed(),
             source_switch=self.destination_switch,
             destination_switch=self.source_switch,
             source_switch_in_port=self.destination_switch_out_port,
             destination_switch_out_port=self.source_switch_in_port,
+            delay_aware_links=self.delay_aware_links,
             id=self.id,
+        )
+
+    @property
+    def path_short(self) -> str:
+        return "->".join(
+            [
+                self.match.ip_src or "??",
+                *[link.src for link in self.path],
+                self.path[-1].dst,
+                self.match.ip_dst or "??",
+            ]
         )
 
     def to_dict(self):

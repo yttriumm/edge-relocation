@@ -1,0 +1,68 @@
+                                         
+#    vid50                                 
+#    │                                     
+#    │                                     
+#    :2                                    
+#   ┌───┐                     ┌───┐        
+#   │ r1│:4─────────────────:4│ r2│        
+#   └───┘                     └───┘        
+#    :3                         :3         
+#    │                           │         
+#    │                           │         
+#    │                           │         
+#    │                           │         
+#    │                           │         
+#    :3                         :3         
+#   ┌───┐                     ┌───┐        
+#   │ r4│:4─────────────────:4│ r3│        
+#   └───┘                     └───┘        
+#    :2                         :2         
+#    │                          │          
+#    │                          │          
+#   vid40                      vid30       
+#  h2default                  h1default    
+                                         
+switches:
+  - name: r1
+    dpid: "1"
+  - name: r2
+    dpid: "2"
+  - name: r3
+    dpid: "3"
+  - name: r4
+    dpid: "4"
+links:
+  - src: r1
+    dst: r2
+    src_port: 4 
+    dst_port: 4
+  - src: r1
+    dst: r4
+    src_port: 3 
+    dst_port: 3
+  - src: r2
+    dst: r3
+    src_port: 3 
+    dst_port: 3
+  - src: r3
+    dst: r4
+    src_port: 4 
+    dst_port: 4
+    
+
+controller:
+  name: c1
+  ip: 192.168.0.100
+  port: 6633
+
+hosts:
+  - name: h1
+    switch: r4
+    switch_port: 2
+    mac: 00:00:00:00:00:01
+    network: green
+  - name: h2
+    switch: r3
+    switch_port: 2
+    mac: 00:00:00:00:00:02
+    network: green

@@ -6,7 +6,13 @@ from apiflask import fields
 from marshmallow_dataclass import class_schema
 from ryu.lib.hub import spawn
 from controller.config.infra_config import Link
-from controller.models.models import AttachmentPoint, PacketMatch, Route
+from controller.models.models import (
+    AttachmentPoint,
+    FlowModOperation,
+    FlowRule,
+    PacketMatch,
+    Route,
+)
 
 
 @dataclasses.dataclass
@@ -18,6 +24,12 @@ class RoutePost:
 class ReroutePost:
     old_route: Route
     new_route: Route
+
+
+@dataclasses.dataclass
+class FlowMod:
+    rule: FlowRule
+    operation: FlowModOperation
 
 
 @app.route("/attachment-points")
@@ -49,7 +61,7 @@ def routes():
 def get_delay_data():
     """Lists all links with their delays"""
     data = ControllerApi.controller.device_manager.links
-    return data
+    return list(data), 200
 
 
 @app.route("/clients")
@@ -65,6 +77,24 @@ def create_route(json_data: RoutePost):
         match=json_data.match
     )
     return dataclasses.asdict(route), 200
+
+
+@app.get("/flows")
+def get_flows():
+    return ControllerApi.controller.routing.get_flow_tables()
+
+
+@app.post("/flows")
+@app.input(class_schema(FlowMod)(many=True))  # type: ignore
+def send_flows(json_data: List[FlowMod]):
+    for rule in json_data:
+        ControllerApi.controller.routing.send_rule(
+            rule=rule.rule, operation=rule.operation
+        )
+        ControllerApi.controller.routing.send_and_await_barriers(
+            switches=[rule.rule.switch]
+        )
+    return get_flows(), 200
 
 
 @app.post("/reroute")
