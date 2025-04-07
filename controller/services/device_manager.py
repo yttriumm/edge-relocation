@@ -245,3 +245,7 @@ class DeviceManager:
             ip = None
         if ip:
             self.remove_default_l3_rules(ap=ap, ip_address=ip)
+
+    def get_port(self, dpid: int, number: int):
+        ports = self.get_ports(dpid=dpid)
+        return [pt for pt in ports if pt.number == number][0]

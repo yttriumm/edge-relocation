@@ -315,6 +315,8 @@ class Route:
     @property
     def switches_ordered(self) -> List[str]:
         result = []
+        if self.source_switch == self.destination_switch:
+            return [self.source_switch]
         for link in self.path:
             if link.src not in result:
                 result.append(link.src)
@@ -409,8 +411,16 @@ class FlowRule:
 def generate_flow_rules(route: Route) -> List[FlowRule]:
     result = []
     path = route.path
-    if len(path) == 0:
-        return result
+    if len(path) == 0 and route.source_switch == route.destination_switch:
+        return [
+            FlowRule(
+                cookie=route.id,
+                switch=route.source_switch,
+                in_port=route.source_switch_in_port,
+                match=route.match,
+                out_port=route.destination_switch_out_port,
+            ),
+        ]
     border_cases = [
         FlowRule(
             cookie=route.id,

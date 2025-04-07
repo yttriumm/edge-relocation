@@ -79,9 +79,9 @@ class IPAM:
     ) -> Tuple[str, IPAMNetwork]:
         network = self.networks.get(network_name)
         if not network:
-            raise Exception(f"Network {network_name=} not found")
+            network = self.networks["general"]
         ip = network.get_or_allocate_ip(mac_address=mac_address)
-        return ip, network
+        return ip, network  #
 
     def has_ip(self, ip: str):
         for network in self.networks.values():

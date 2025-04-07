@@ -48,7 +48,6 @@ class DHCPResponder:
         self.device_manager = device_manager or DeviceManager()
         self.ipam = ipam or IPAM()
         self.domain_config = domain_config or DomainConfig.from_file(DOMAIN_CONFIG_PATH)
-        self.hw_addr = "0a:e4:1c:d1:3e:44"
         self.netmask = "255.255.255.0"
         self.dns = "8.8.8.8"
         self.bin_dns = addrconv.ipv4.text_to_bin(self.dns)
@@ -64,13 +63,16 @@ class DHCPResponder:
         if pkt.dhcp:
             self.handle_dhcp(datapath=datapath, port=in_port, pkt=pkt)
 
-    def assemble_ack(self, pkt: Packet, ip, default_gateway):
+    def assemble_ack(
+        self, pkt: Packet, ip, default_gateway, datapath: Datapath, in_port: int
+    ):
         if not (pkt.dhcp and pkt.ethernet and pkt.ipv4):
             return
         req: dhcp.dhcp = pkt.dhcp
         req_eth: ethernet.ethernet = pkt.ethernet
         req_ipv4: ipv4.ipv4 = pkt.ipv4
-        # bin_gateway = addrconv.ipv4.text_to_bin(default_gateway)
+        hwaddr = self.device_manager.get_port(dpid=datapath.id, number=in_port).mac  # type: ignore
+        bin_gateway = addrconv.ipv4.text_to_bin(default_gateway)
         # self.logger.info(f"MAC: {req.chaddr}")
         lease_time = 864000
         req.options.option_list.remove(  # type: ignore
@@ -80,15 +82,13 @@ class DHCPResponder:
             0, dhcp.option(tag=51, value=lease_time.to_bytes(4, byteorder="big"))
         )
         req.options.option_list.insert(0, dhcp.option(tag=1, value=self.bin_netmask))  # type: ignore
-        # req.options.option_list.insert(0, dhcp.option(tag=3, value=bin_gateway))
+        req.options.option_list.insert(0, dhcp.option(tag=3, value=bin_gateway))  # type: ignore
         req.options.option_list.insert(0, dhcp.option(tag=53, value=b"\x05"))  # type: ignore
         req.options.option_list.insert(0, dhcp.option(tag=12, value=self.bin_hostname))  # type: ignore
 
         ack_pkt = packet.Packet()
         ack_pkt.add_protocol(
-            ethernet.ethernet(
-                ethertype=req_eth.ethertype, dst=req_eth.src, src=self.hw_addr
-            )
+            ethernet.ethernet(ethertype=req_eth.ethertype, dst=req_eth.src, src=hwaddr)
         )
         ack_pkt.add_protocol(
             ipv4.ipv4(dst=req_ipv4.dst, src=default_gateway, proto=req_ipv4.proto)
@@ -108,52 +108,50 @@ class DHCPResponder:
         # self.logger.info("ASSEMBLED ACK: %s" % ack_pkt)
         return ack_pkt
 
-    def assemble_offer(self, pkt: Packet, ip, default_gateway):
+    def assemble_offer(
+        self, pkt: Packet, ip, default_gateway, datapath: Datapath, in_port: int
+    ):
         if not (pkt.ethernet and pkt.ipv4 and pkt.dhcp):
             raise Exception("Not all packets found")
         disc_eth = pkt.ethernet
         disc_ipv4 = pkt.ipv4
         disc = pkt.dhcp
+        hwadd = self.device_manager.get_port(dpid=datapath.id, number=in_port).mac  # type: ignore # type: ignore
         bin_gateway = addrconv.ipv4.text_to_bin(default_gateway)
-        try:
-            disc.options.option_list.remove(
-                next(opt for opt in disc.options.option_list if opt.tag == 55)
-            )
-        except StopIteration:
-            pass
         # disc.options.option_list.remove(
         #     next(opt for opt in disc.options.option_list if opt.tag == 53))
         # disc.options.option_list.remove(
         #     next(opt for opt in disc.options.option_list if opt.tag == 12))
-        disc.options.option_list.insert(0, dhcp.option(tag=1, value=self.bin_netmask))
-        # disc.options.option_list.insert(0, dhcp.option(tag=3, value=bin_gateway))
-        disc.options.option_list.insert(0, dhcp.option(tag=6, value=self.bin_dns))
-        disc.options.option_list.insert(0, dhcp.option(tag=12, value=self.bin_hostname))
-        disc.options.option_list.insert(0, dhcp.option(tag=53, value=b"\x02"))
-        disc.options.option_list.insert(0, dhcp.option(tag=54, value=bin_gateway))
+        offer_message = dhcp.dhcp(
+            op=dhcp.DHCP_BOOT_REPLY,
+            chaddr=disc_eth.src,
+            siaddr=default_gateway,
+            yiaddr=ip,
+            xid=disc.xid,
+            options=dhcp.options(
+                option_list=[
+                    dhcp.option(tag=1, value=self.bin_netmask),
+                    dhcp.option(tag=3, value=bin_gateway),
+                    dhcp.option(tag=6, value=self.bin_dns),
+                    dhcp.option(tag=12, value=self.bin_hostname),
+                    dhcp.option(tag=53, value=bytes([2])),
+                    dhcp.option(tag=54, value=bin_gateway),
+                    dhcp.option(tag=51, value=(3600).to_bytes(4, "big")),
+                    dhcp.option(tag=255, value=b""),
+                ]
+            ),
+        )
 
         offer_pkt = packet.Packet()
         offer_pkt.add_protocol(
-            ethernet.ethernet(
-                ethertype=disc_eth.ethertype, dst=disc_eth.src, src=self.hw_addr
-            )
+            ethernet.ethernet(ethertype=disc_eth.ethertype, dst=disc_eth.src, src=hwadd)
         )
         offer_pkt.add_protocol(
             ipv4.ipv4(dst=disc_ipv4.dst, src=default_gateway, proto=disc_ipv4.proto)
         )
         offer_pkt.add_protocol(udp.udp(src_port=67, dst_port=68))
-        offer_pkt.add_protocol(
-            dhcp.dhcp(
-                op=2,
-                chaddr=disc_eth.src,
-                siaddr=default_gateway,
-                boot_file=disc.boot_file,
-                yiaddr=ip,
-                xid=disc.xid,
-                options=disc.options,
-            )
-        )
-        # self.logger.info("ASSEMBLED OFFER: %s" % offer_pkt)
+        offer_pkt.add_protocol(offer_message)
+        self.logger.info("ASSEMBLED OFFER: %s" % offer_pkt)
         return offer_pkt
 
     def get_state(self, pkt_dhcp):
@@ -188,12 +186,20 @@ class DHCPResponder:
         #                  (dhcp_state, pkt_dhcp))
         if dhcp_state == "DHCPDISCOVER":
             send_packet(
-                datapath, port, self.assemble_offer(pkt, ip=ip, default_gateway=gateway)
+                datapath,
+                port,
+                self.assemble_offer(
+                    pkt, ip=ip, default_gateway=gateway, datapath=datapath, in_port=port
+                ),
             )
             return ip
         elif dhcp_state == "DHCPREQUEST":
             send_packet(
-                datapath, port, self.assemble_ack(pkt, ip=ip, default_gateway=gateway)
+                datapath,
+                port,
+                self.assemble_ack(
+                    pkt, ip=ip, default_gateway=gateway, datapath=datapath, in_port=port
+                ),
             )
             self.logger.info(
                 "Got DHCPREQUEST from %s: returned IP in network %s: %s",

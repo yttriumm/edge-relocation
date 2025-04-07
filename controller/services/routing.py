@@ -154,27 +154,36 @@ class RouteManager:
         file_logger.debug(pkt)
         source_ip = match.ip_src
         destination_ip = match.ip_dst
-        if not (source_ip and destination_ip):
+        if not source_ip or not destination_ip:
+            logger.info(
+                f"No source or destination IP. Cannot find attachment points. mac_src: {match.mac_src} mac_dst: {match.mac_dst}"
+            )
             return
         if not (self.ipam.has_ip(source_ip) and self.ipam.has_ip(destination_ip)):
             logger.debug(f"Ignoring connection request {source_ip} - {destination_ip}")
             return
-        if not source_ip or not destination_ip:
-            raise Exception(
-                "No source or destination IP. Cannot find attachment points."
-            )
-        if match in self.routes:
+        src_network = self.ipam.get_network_for_ip(source_ip)
+        if self.ipam.is_gateway_ip(destination_ip):
+            logger.info("Ignoring connection request to gateway")
+            return
+        if not src_network.has_ip(destination_ip):
             logger.info(
-                "Ignoring existing route PacketIn. You might want to take a look on that."
+                f"Ignoring connection request from network: {src_network} to IP: {destination_ip}: not in the same newtork."
+            )
+            return
+        if match in self.routes:
+            logger.debug(
+                f"Got PacketIn for existing route. You might want to take a look on that. Got match: {match} and route: {self.routes[match]}"
             )
             return
         route = self.create_and_apply_route(match=pkt.match, ctx=msg)
-        if route.path:
-            self.send_packet_out(
-                switch_name=route.source_switch,
-                packet=msg.data,
-                out_port=route.path[0].src_port,
-            )
+        self.send_packet_out(
+            switch_name=route.source_switch,
+            packet=msg.data,
+            out_port=route.path[0].src_port
+            if route.path
+            else route.destination_switch_out_port,
+        )
 
     def create_and_apply_route(
         self, match: PacketMatch, ctx: Optional[PacketIn] = None
